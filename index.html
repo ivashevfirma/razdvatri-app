@@ -2635,6 +2635,103 @@ body{padding:0!important;margin:0!important;display:block!important}
 #app[data-skin] .nlist .nopt{background:var(--rub)!important;box-shadow:var(--rub-sh-s)!important;border:0!important;color:var(--ink)!important;border-radius:var(--r-m)!important}
 #app[data-skin] .nlist .nopt.on{box-shadow:var(--rub-pr)!important}
 </style>
+<style>/* =================== v21 =================== */
+/* ---- логотип в шапке светится огоньками темы — во всех темах ---- */
+.app[data-skin] #xbrand svg.mk{filter:drop-shadow(0 0 2px color-mix(in srgb,var(--led) 70%,transparent)) drop-shadow(0 0 7px color-mix(in srgb,var(--led) 45%,transparent));transition:filter .6s ease}
+.app[data-th] #xbrand svg{filter:drop-shadow(0 0 3px color-mix(in srgb,var(--led) 90%,transparent)) drop-shadow(0 0 10px color-mix(in srgb,var(--led) 65%,transparent))}
+.app[data-th=""] #xbrand svg:not(.mk){filter:none}
+.app[data-th=""] #xbrand svg.mk{filter:drop-shadow(0 0 2px color-mix(in srgb,var(--led) 70%,transparent)) drop-shadow(0 0 7px color-mix(in srgb,var(--led) 45%,transparent))}
+/* ---- Коллекция в Пульте ---- */
+.coll21{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.coll21h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.coll21h .m{font-size:12px;color:var(--mut)}
+.coll21g{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.th21{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 12px 11px;border-radius:var(--r-m);text-align:left;color:var(--ink);background:var(--rub);box-shadow:var(--rub-sh-s)}
+.th21 b{font:600 15px/1.2 Onest,sans-serif}
+.th21 span{display:flex;align-items:center;gap:5px;font:500 11.5px/1.25 Onest,sans-serif;color:var(--mut)}
+.th21.on{box-shadow:var(--rub-pr),0 0 0 1.5px color-mix(in srgb,var(--led) 70%,transparent)!important}
+.sw21{width:100%;height:30px;border-radius:10px;margin-bottom:4px;background:radial-gradient(circle at 78% 50%,var(--c) 0 5px,transparent 6px),radial-gradient(circle at 78% 50%,color-mix(in srgb,var(--c) 45%,transparent) 0,transparent 18px),linear-gradient(110deg,var(--a) 0 55%,var(--b) 55%);box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+.lk21{width:9px;height:10px;border-radius:2px;background:currentColor;position:relative;display:inline-block;margin-top:2px}
+.lk21::before{content:"";position:absolute;left:1.5px;top:-5px;width:6px;height:6px;border:1.5px solid currentColor;border-bottom:0;border-radius:4px 4px 0 0;box-sizing:border-box}
+/* ---- примерка ---- */
+.try21{position:absolute;left:12px;right:12px;bottom:calc(var(--tbt,96px) + 10px);z-index:240;translate:0 20px;opacity:0;transition:translate .45s var(--spring),opacity .3s ease}
+.try21.on{translate:0 0;opacity:1}
+.try21i{display:flex;flex-direction:column;gap:10px;padding:14px 16px 12px;border-radius:var(--r-l);background:var(--rub);box-shadow:var(--rub-sh),0 0 0 1px color-mix(in srgb,var(--led) 50%,transparent),0 0 30px color-mix(in srgb,var(--led) 30%,transparent)}
+.try21bar{display:block;height:4px;border-radius:2px;background:var(--led);box-shadow:0 0 8px var(--led);transform-origin:left;animation:try21 10s linear forwards}
+@keyframes try21{to{transform:scaleX(0)}}
+.try21b{display:flex;align-items:center;gap:8px}
+.try21b .btn{flex:1}
+.try21 .m{margin:0;font-size:12px;color:var(--mut)}
+/* ---- Розовая: розовые огоньки и подсветка контуров ---- */
+.app[data-th=pink] :is(.pcard,.xidx,.mkc3,.li,.art,.wcard,.xinfo,.pcol,.hall16card,.fxc,.nw,.th21){box-shadow:var(--rub-sh),0 0 0 1px rgba(255,79,163,.45),0 0 22px rgba(255,79,163,.26)!important}
+.app[data-th=pink] :is(.xtab .plus,.btn:not(.s),.seg3 button.on,.seg button.on,.chip.on){box-shadow:0 0 0 1px rgba(255,140,200,.7) inset,0 0 18px rgba(255,79,163,.6)!important}
+.app[data-th=pink] :is(.tab.xtab,.hdr.xhdr){box-shadow:var(--rub-sh),0 0 0 1px rgba(255,79,163,.4),0 0 26px rgba(255,79,163,.25)!important}
+/* ---- Карбон: плетение и сигнальный оранжевый ---- */
+.app[data-th=carbon]{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 3px,rgba(0,0,0,.18) 3px 6px),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 3px,rgba(0,0,0,.16) 3px 6px)!important}
+.app[data-th=carbon] :is(.pcard,.mkc3,.art,.wcard,.xinfo,.pcol,.fxc,.nw,.hdr.xhdr,.tab.xtab,#sheet,.th21,.li){background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 3px,rgba(0,0,0,.18) 3px 6px),repeating-linear-gradient(-45deg,rgba(255,255,255,.03) 0 3px,rgba(0,0,0,.16) 3px 6px),linear-gradient(180deg,#26292D,#15171A)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1px rgba(255,106,0,.22),0 14px 26px -12px rgba(0,0,0,.9)!important}
+.app[data-th=carbon] .xidx{background:linear-gradient(135deg,#FF7A1A,#E85500)!important;color:#111!important}
+.app[data-th=carbon] .xidx :is(.m,.eb,.xidx-n span){color:rgba(17,17,17,.72)!important}
+.app[data-th=carbon] .xidx-g .fg{stroke:#111!important;filter:none!important}
+/* ---- Краснодар: золотой кант ---- */
+.app[data-th=city-krd] :is(.pcard,.xidx,.mkc3,.art,.wcard,.xinfo,.pcol,.fxc,.nw,.th21){box-shadow:var(--rub-sh),0 0 0 1px rgba(244,212,124,.25),0 0 18px rgba(244,212,124,.12)!important}
+/* ---- Москва: кирпич, золото, рубин ---- */
+.app[data-th=city-msk] :is(.hdr.xhdr,.tab.xtab){background:linear-gradient(180deg,#A3302A,#7A1E1A)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -3px 8px rgba(0,0,0,.35),0 0 0 1px rgba(232,196,110,.55),0 10px 24px -10px rgba(122,30,26,.7)!important}
+.app[data-th=city-msk] .hdr.xhdr :is(.wm,.wmen,button){color:#F2D488!important}
+.app[data-th=city-msk] .tab.xtab button:not(.plus){color:#F7E7C6!important}
+.app[data-th=city-msk] .tab.xtab .plus{background:linear-gradient(180deg,#F2D488,#C9A04A)!important;color:#5A1512!important;box-shadow:0 0 16px rgba(242,212,136,.7)!important}
+.app[data-th=city-msk] :is(.pcard,.xidx,.mkc3,.art,.wcard,.xinfo,.pcol,.fxc,.nw,.th21){box-shadow:var(--rub-sh),0 0 0 1px rgba(201,160,74,.55)!important}
+/* ---- Юг: море и закат ---- */
+.app[data-th=city-sch] :is(.pcard,.xidx,.mkc3,.art,.wcard,.xinfo,.pcol,.fxc,.nw,.th21){box-shadow:var(--rub-sh),0 0 0 1px rgba(54,217,200,.35),0 0 18px rgba(255,122,89,.14)!important}
+.app[data-th=city-sch] .tab.xtab .plus{background:linear-gradient(180deg,#FF8A66,#E8603F)!important;color:#fff!important;box-shadow:0 0 18px rgba(255,122,89,.65)!important}
+.app[data-th=city-sch] .xidx{background:linear-gradient(135deg,#FFB08F,#F27A5B 55%,#2A8C88)!important;color:#fff!important}
+.app[data-th=city-sch] .xidx :is(.m,.eb,.xidx-n span){color:rgba(255,255,255,.85)!important}
+/* ---- заставка: слова гаснут, когда появляется знак ---- */
+.xr3 .r3w{transition:opacity .7s ease}
+.xr3.wm .r3w{opacity:0}
+/* ---- нижнее меню: огонёк ниже, просвет до подписи больше ---- */
+.app[data-skin] .tab.xtab button:not(.plus)::after{bottom:-3px!important}
+.app[data-skin] .tab.xtab button:not(.plus) span{display:inline-block;translate:0 -2px}
+/* ---- подсказки в полях читаются ---- */
+.app[data-skin] :is(input,textarea)::placeholder{color:color-mix(in srgb,var(--mut) 80%,var(--ink))!important;opacity:1!important}
+/* ---- Пульс: ставка ЦБ без загадочного кружка ---- */
+.krnote{display:flex;flex-direction:column;align-items:flex-end;gap:2px;text-align:right}
+.krnote b{font:600 13px/1.2 Onest,sans-serif;color:var(--ink);padding:5px 10px;border-radius:999px;background:var(--rub);box-shadow:var(--rub-sh-s)}
+.krnote span{font:500 11.5px Onest,sans-serif;color:var(--mut);margin-top:4px}
+.pci img{width:100%;height:100%;object-fit:cover;display:block}
+/* ---- подкасты: резиновая кнопка с огоньком ---- */
+.app[data-skin] .pod .pplay{width:42px;height:42px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:0;background:var(--rub)!important;box-shadow:var(--rub-sh-s)!important;position:relative;color:var(--ink)}
+.app[data-skin] .pod .pplay::before{content:"";width:0;height:0;border-left:11px solid currentColor;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.app[data-skin] .pod .pplay::after{content:"";position:absolute;right:5px;top:5px;width:5px;height:5px;border-radius:50%;background:var(--led);box-shadow:0 0 6px var(--led)}
+.app[data-skin] .pod .eq i{background:var(--led)!important;box-shadow:0 0 5px color-mix(in srgb,var(--led) 70%,transparent)}
+/* ---- «Читать»: разные материалы и крупный номер ---- */
+#app[data-skin] .arts .art:nth-child(3n+1){background:var(--mat2)!important;color:var(--onmat2)!important}
+#app[data-skin] .arts .art:nth-child(3n+1) .m{color:color-mix(in srgb,var(--onmat2) 70%,transparent)!important}
+#app[data-skin] .arts .art:nth-child(3n+3){background:var(--fillg,var(--a1))!important;color:var(--on1)!important}
+#app[data-skin] .arts .art:nth-child(3n+3) .m{color:color-mix(in srgb,var(--on1) 70%,transparent)!important}
+#app[data-skin] .arts .art .an{opacity:1;color:inherit;text-shadow:0 0 14px color-mix(in srgb,var(--led) 45%,transparent)}
+/* ---- полноэкранная версия: без двойного отступа сверху ---- */
+.app.standalone{--sat:max(calc(env(safe-area-inset-top,0px) - 14px),20px)}
+/* ---- сброс фильтра в ленте ---- */
+.qreset21{position:absolute;z-index:14;left:50%;translate:-50% 0;top:calc(var(--HD) + 62px);display:flex;align-items:center;gap:8px;max-width:calc(100% - 40px);padding:7px 8px 7px 14px;border-radius:999px;font:500 12.5px Onest,sans-serif;color:var(--ink);background:var(--rub);box-shadow:var(--rub-sh),0 0 0 1px color-mix(in srgb,var(--led) 50%,transparent)}
+.qreset21 span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qreset21 b{flex:none;padding:4px 10px;border-radius:999px;font-weight:600;background:var(--fillg,var(--a1));color:var(--on1)}
+/* ---- «Первая сотня»: что это ---- */
+.h100what{display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:var(--r-m);background:var(--rub);box-shadow:var(--rub-sh-s);margin:4px 0 6px}
+.h100what p{margin:0;color:var(--ink)!important;font-size:14px}
+.h100what ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px;font-size:13px;color:var(--mut)}
+.h100what b{color:var(--ink)}
+.ob-free{margin:-2px 0 6px;font-size:12.5px;color:var(--mut)}
+/* ---- переносы: заголовки ровными строками, абзацы без «висячих» слов ---- */
+.app :is(.st,.H,h1,h2,h3,.xidx-t b,.lxh,.pcov-t,.tk-h,.otier16 b,.hall16card b,.mkc3 b,.lxc b,.pct){text-wrap:balance}
+.app :is(p,.m,li,.nt,.at,.demo18t){text-wrap:pretty}
+.slide.new21 .xinfo{box-shadow:var(--rub-sh),0 0 0 1.5px var(--led),0 0 24px color-mix(in srgb,var(--led) 45%,transparent)!important}
+/* ---- контраст: «Потяни, чтобы записаться», карбон-индекс ---- */
+.app[data-skin] .xswipe .xst{color:color-mix(in srgb,var(--ink) 72%,var(--mut))!important}
+.app[data-th=carbon] .xidx :is(.m,.eb,.xidx-n span){color:rgba(17,17,17,.82)!important}
+/* ---- рост/падение на светлых темах — тёмные зелёный и красный ---- */
+.app:not([data-skin=graphite]) :is(.up,.fxd.up){color:#0E5A2F!important}
+.app:not([data-skin=graphite]) .dn{color:#8C1D14!important}
+</style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="foilG" x1="0" y1="0" x2="1" y2=".35"><stop offset="0" stop-color="#8E6C2F"/><stop offset=".3" stop-color="#F7E3A3"/><stop offset=".42" stop-color="#FFF6D4"/><stop offset=".55" stop-color="#C9A24E"/><stop offset=".8" stop-color="#E3C67A"/><stop offset="1" stop-color="#8E6C2F"/></linearGradient></defs></svg>
 <div id="boot20" aria-hidden="true" style="position:fixed;inset:0;z-index:2147483000;background:radial-gradient(110% 75% at 50% 42%,#25231F,#0E0D0C 72%)"></div>
 <div class="app" id="app" tabindex="-1">
@@ -2751,7 +2848,7 @@ const DOCS=[
 {id:"game",t:"Правила: барабан и баллы",b:`<p>Организатор: ${OWNER.fio}. Участие бесплатное, прокруты не продаются.</p>
 <h4>Прокруты</h4><p>Даются за действия в сервисе: лайки (1 за каждые 3), репосты, запись на показ, визит на показ, отзыв, сделку через РАЗДВАТРИ.</p>
 <h4>Награда</h4><p>Каждый прокрут приносит одинаковое количество баллов — 50 (на тарифах с множителем — 50 × множитель). Размер награды не зависит от случая. Барабан выбирает только внешний вид логотипа пользователя в шапке, у комбинации нет денежной или иной ценности. Денежных призов нет.</p>
-<h4>Баллы</h4><ul><li>1 балл = 1 ₽ скидки на услуги РАЗДВАТРИ, до 50% стоимости</li><li>не являются деньгами, не выводятся и не передаются другим пользователям</li><li>сгорают через 12 месяцев без активности</li></ul>
+<h4>Баллы</h4><ul><li>баллы — клубная валюта: темы оформления, прокруты, продвижение и закреп объектов, места на клубных встречах</li><li>не являются деньгами, не выводятся и не передаются другим пользователям</li><li>сгорают через 12 месяцев без активности</li></ul>
 <h4>Отзывы</h4><p>Баллы за отзыв начисляются одинаково при любой оценке. Отзыв должен быть о реальном показе.</p>
 <p class="dnote">Награда фиксированная, случайного приза нет — это снимает признак лотереи. Формулировки всё равно проверить у юриста до запуска.</p>`}
 ];
@@ -3178,7 +3275,7 @@ function outcome(){const n=NUMS.length,r=Math.random();
  let t=[pick(n),pick(n),pick(n)];while(t[0]==t[1]||t[1]==t[2]||t[0]==t[2])t=[pick(n),pick(n),pick(n)];return {kind:"miss",t}}
 Object.assign(S,{pts:1250,spins:2,likesN:0,hist:[["Приветственные баллы",1000,"сегодня"],["Лайки в ленте",250,"вчера"]],status:"Свой",reviewed:false,lastWin:null,vault:{}});
 const EARN=[["like","Лайк объекту","1 прокрут за каждые 3 лайка",0,0],["share","Поделиться объектом","+1 прокрут",1,0],["book","Записаться на показ","+2 прокрута · +50 баллов",2,50],["visit","Прийти на показ","+3 прокрута · +200 баллов",3,200],["review","Отзыв после показа","+2 прокрута · +100 баллов",2,100],["deal","Сделка через РАЗДВАТРИ","+10 прокрутов · +10 000 баллов",10,10000]];
-const SHOP=[["Продвижение в ленте на 7 дней",990],["Закреп на 30 дней",2900],["ИИ-упаковка объекта −50%",4995],["«Ключ» на месяц",3990]];
+const SHOP=[["Продвижение в ленте на 7 дней",990],["Закреп на 30 дней",2900],["Место на клубной встрече",2000],["+3 прокрута барабана",600]]; // v21: баллы — не деньги, тратятся на клубные вещи
 function earn(k){const e=EARN.find(x=>x[0]==k);if(!e)return;
  if(k=="like"){S.likesN++;if(S.likesN%3)return;}
  S.spins+=e[3];S.pts+=e[4];if(e[4])S.hist.unshift([e[1],e[4],"сейчас"]);
@@ -3208,9 +3305,9 @@ function earnSheet(){sheet(wrapS(`<span class="eb">Прокруты и балл�
  <div class="exbox step"><div class="eb">Сделка через нас</div><ul><li>+10 000 баллов и 10 прокрутов</li><li>Ключ «Связка» и статус «Партнёр»</li><li>Бесплатная ИИ-упаковка следующего объекта</li><li>Цены «для своих» в Маркете</li></ul></div>
  <p class="m" style="font-size:11px">Баллы не выводятся и не передаются. Отзывы награждаются одинаково при любой оценке. <u data-doc="game">Правила</u></p>`))}
 function walletSheet(){sheet(wrapS(`<span class="eb">Кошелёк</span><div class="wbig"><span class="wallet-n" id="wbn">0</span><small>баллов</small></div>
- <p class="m">1 балл = 1 ₽ скидки на услуги РАЗДВАТРИ. Можно оплатить до 50% стоимости.</p>
+ <p class="m">Баллы — клубная валюта, не деньги: темы, прокруты, продвижение и закреп объектов, места на клубных встречах.</p>
  <div class="eb">Потратить</div>${SHOP.map(([t,p],i)=>`<div class="li step"><div><div class="t">${t}</div><div class="m">${fmt(p)} баллов</div></div><button class="chip ${S.pts>=p?"c1":""}" data-buy="${i}">${S.pts>=p?"Взять":"Мало"}</button></div>`).join("")}
- <button class="li step" data-go="market" style="width:100%;text-align:left"><div><div class="t">Маркет для своих</div><div class="m">Товары и услуги резидентов, часть можно баллами</div></div><span class="m">→</span></button>
+ <button class="li step" data-go="market" style="width:100%;text-align:left"><div><div class="t">Маркет для своих</div><div class="m">Товары и услуги резидентов — по ценам для своих</div></div><span class="m">→</span></button>
  <div class="eb">История</div>${S.hist.slice(0,8).map(([t,v,d])=>`<div class="li step"><div><div class="t">${t}</div><div class="m">${d}</div></div><b style="color:${v>0?"var(--a1)":"var(--a3)"}">${v>0?"+":""}${fmt(v)}</b></div>`).join("")}
  <button class="btn s step" data-earn>Как получить ещё</button>`));cnt($("#wbn"),S.pts,800)}
 
@@ -3240,8 +3337,8 @@ V.pulse=()=>{const tick=[["КЛЮЧЕВАЯ",KEY.rate.toFixed(2).replace(".",","
  const tk=tick.map(([a,b,c])=>`<span><b>${a}</b> ${b}${c?` <i class="${c>=0?"up":"dn"}">${c>=0?"▲":"▼"}${Math.abs(c).toFixed(2).replace(".",",")}%</i>`:""}</span>`).join("");
  return `<div class="scroll pulse2"><div class="pad phead"><h1 class="H">Пульс</h1><span class="m"><i class="live"></i> Краснодар · <span id="clock"></span></span></div>
  <div class="ticker2" aria-label="Курсы и ставка"><div class="tt">${tk}${tk}</div></div>
- <div class="pcard step step-lg krc rise" style="--i:0"><div class="eb">Ключевая ставка ЦБ</div><div class="krrow"><span class="big acc" id="krN">0</span><div class="krring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="bgc"/><circle cx="60" cy="60" r="50" class="fgc" style="--p:${KEY.rate/25}"/></svg><span>из 25</span></div></div>
-  <p class="m">С ${KEY.since}, сохранена ${KEY.kept}. Высокая ставка — бизнес чаще арендует, чем покупает.</p></div>
+ <div class="pcard step step-lg krc rise" style="--i:0"><div class="eb">Ключевая ставка ЦБ</div><div class="krrow"><span class="big acc" id="krN">0</span><div class="krnote"><b>без изменений</b><span>с ${KEY.since}</span></div></div>
+  <p class="m">Последнее решение ЦБ — ${KEY.kept}: ставку сохранили. <b>Что это значит:</b> кредиты дорогие, поэтому бизнес чаще арендует, чем покупает, а собственникам выгоднее сдавать.</p></div>
  <div class="sec"><h2>Курсы ЦБ</h2><span class="m">на ${FXR.date}</span></div>
  <div class="fxg pad">${FXR.rows.slice(0,6).map((r,i)=>{const c=chg(r);return `<div class="fxc step rise" style="--i:${i+1}"><div class="eb">${r[0]}${r[2]>1?" · "+r[2]:""}</div><div class="fxv" data-to="${r[3]}">0</div><div class="fxd ${c>=0?"up":"dn"}">${c>=0?"▲":"▼"} ${Math.abs(c).toFixed(2).replace(".",",")}%</div><div class="fxbar"><i style="--w:${Math.min(100,Math.abs(c)*40)}%"></i></div></div>`}).join("")}</div>
  <div class="pcard step step-lg conv rise" style="--i:7"><div class="eb">Конвертер · курс ЦБ на ${FXR.date}</div>
@@ -3298,9 +3395,9 @@ function vaultSheet(id){const v=VAULT.find(x=>x[0]==id),L=S.vault[id]||[];
  $$("[data-vdel]").forEach(b=>b.onclick=()=>{L.splice(+b.dataset.vdel,1);vaultSheet(id)})}
 
 // ---------- МАРКЕТ ДЛЯ СВОИХ
-const MK=[["Ремонт","Ремонт коммерческих помещений под ключ","«СтройДело» · резидент","−10% для своих","до 30% баллами"],["Вывески","Световые вывески и навигация","«Неон Юг» · резидент","−15%","до 20% баллами"],["Юрист","Проверка договора аренды","юрист Анна К. · резидент","3 900 ₽ вместо 6 000 ₽","можно баллами"],["Клининг","Клининг после ремонта","«Чисто» · резидент","−20%","до 30% баллами"],["Оборудование","Кофемашины в аренду для кафе","«Бариста Про» · резидент","первый месяц — 0 ₽",""],["Съёмка","Фотосъёмка помещения для ИИ-упаковки","фотограф Илья · резидент","4 900 ₽","до 50% баллами"]];
+const MK=[["Ремонт","Ремонт коммерческих помещений под ключ","«СтройДело» · резидент","−10% для своих","+ баллы клуба за заказ"],["Вывески","Световые вывески и навигация","«Неон Юг» · резидент","−15%","+ баллы клуба за заказ"],["Юрист","Проверка договора аренды","юрист Анна К. · резидент","3 900 ₽ вместо 6 000 ₽","+ баллы клуба за заказ"],["Клининг","Клининг после ремонта","«Чисто» · резидент","−20%","+ баллы клуба за заказ"],["Оборудование","Кофемашины в аренду для кафе","«Бариста Про» · резидент","первый месяц — 0 ₽",""],["Съёмка","Фотосъёмка помещения для ИИ-упаковки","фотограф Илья · резидент","4 900 ₽","+ баллы клуба за заказ"]];
 let MKF="Все";
-V.market=()=>`<div class="scroll"><div class="pad"><span class="eb">Маркет для своих</span><h1 class="H" style="font-size:26px;margin-top:6px">Бизнесы резидентов — по ценам для своих</h1><p class="m" style="margin-top:8px">Ремонт, вывески, юристы, оборудование — от тех, кто уже заехал. Скидки только внутри РАЗДВАТРИ, часть можно оплатить баллами.</p></div>
+V.market=()=>`<div class="scroll"><div class="pad"><span class="eb">Маркет для своих</span><h1 class="H" style="font-size:26px;margin-top:6px">Бизнесы резидентов — по ценам для своих</h1><p class="m" style="margin-top:8px">Ремонт, вывески, юристы, оборудование — от тех, кто уже заехал. Скидки только внутри РАЗДВАТРИ.</p></div>
  <div class="pad chips" style="margin-top:14px">${["Все"].concat([...new Set(MK.map(m=>m[0]))]).map(c=>`<button data-mkf="${c}" class="${c==MKF?"on":""}">${c}</button>`).join("")}</div>
  <div class="pad mk">${MK.filter(m=>MKF=="Все"||m[0]==MKF).map((m,i)=>`<div class="mkc step step-lg rise" style="--i:${i}"><div class="mkt"><span class="chip">${m[0]}</span>${m[4]?`<span class="chip c1">${m[4]}</span>`:""}</div><div class="t" style="font-size:16px">${m[1]}</div><div class="m">${m[2]}</div><div class="mkp">${m[3]}</div><button class="btn sm step" data-mkbuy="${i}">Хочу так</button></div>`).join("")}</div>
  <div class="pad" style="margin-top:14px"><button class="btn s step" id="mkAdd" style="width:100%">+ Разместить свой бизнес</button><p class="m" style="margin-top:8px">Компании и цены — демо. Сделки в Маркете — между пользователями; правила площадки — в соглашении.</p></div></div>`;
@@ -3733,9 +3830,9 @@ function overview(){if(PRISM)return;PRISM=true;const P=prismBuild(false);P.st.cl
 // ---------- ШТОРКА: бонусная игра (тянуть шапку вниз)
 function shadeHTML(){const lock=!S.reg;return `<div class="shin"><div class="shtop"><div><span class="eb">Бонусная игра</span><p class="st"><span>Действуешь —</span> <b>крутишь</b></p></div><div class="xring big" id="shRing">${ringHTML(S.spins,1)}</div></div>
  ${lock?`<div class="shlock"><p class="st"><span>Зарегистрируйтесь —</span> <b>3 прокрута в подарок</b></p><p class="m2">Прокруты и баллы хранятся в профиле, поэтому игра открывается после входа по телефону.</p><button class="btn" id="shReg">Войти по телефону</button></div>`:spinHTML()}
- <div class="shgrid"><button data-wallet><span class="eb">Баллы</span><b class="wallet-n">${fmt(S.pts)}</b><span class="m">1 балл = 1 ₽ скидки</span></button><button data-tiers><span class="eb">Тариф</span><b>${TIERS[S.tier||0][0]}</b><span class="m">баллы ×${mult()} за действия</span></button></div>
+ <div class="shgrid"><button data-wallet><span class="eb">Баллы</span><b class="wallet-n">${fmt(S.pts)}</b><span class="m">клубная валюта</span></button><button data-tiers><span class="eb">Тариф</span><b>${TIERS[S.tier||0][0]}</b><span class="m">баллы ×${mult()} за действия</span></button></div>
  <div class="sheh"><span class="eb">Что сколько даёт</span>${EARN.map(e=>`<div class="er"><span>${e[1]}</span><b>${e[2].replace(/\+(\d[\d ]*) баллов/,(m,n)=>"+"+fmt(+n.replace(/ /g,"")*mult())+" баллов")}</b></div>`).join("")}</div>
- <p class="m" style="font-size:11px">Баллы — скидка на услуги клуба, не деньги: не выводятся и не передаются. Прокруты не продаются. <u data-doc="game">Правила</u></p></div><div class="shgrab"><i></i></div>`}
+ <p class="m" style="font-size:11px">Баллы — клубная валюта, не деньги: не выводятся и не передаются. Прокруты не продаются. <u data-doc="game">Правила</u></p></div><div class="shgrab"><i></i></div>`}
 function shadeOpen9(fromDrag){let sh=$("#xshade");if(!sh){sh=document.createElement("div");sh.id="xshade";sh.className="xshade";sh.setAttribute("role","dialog");sh.setAttribute("aria-label","Бонусная игра");APP.appendChild(sh);const sc=document.createElement("div");sc.id="xshscrim";sc.className="xshscrim";APP.appendChild(sc);sc.onclick=()=>shadeClose()}
  sh.innerHTML=shadeHTML();if(S.reg){D=[];[1,3,5].forEach((s,k)=>D.push(new Drum($$("#xshade .drum")[k],k,s)));bindSpin();$("#snd")&&($("#snd").onclick=()=>{S.sound=!S.sound;$("#snd").textContent=S.sound?"♪ вкл":"♪ выкл"})}
  $("#shReg")&&($("#shReg").onclick=()=>{shadeClose();regSheet()});$("[data-tiers]",sh).onclick=()=>{shadeClose();tiersSheet()};
@@ -3974,7 +4071,7 @@ function qSheet(){const D={...S.q,types:[...S.q.types],districts:[...S.q.distric
   <div class="seg3">${["Аренда","Продажа","Всё"].map(d=>`<button data-qd="${d}" class="${D.deal==d?"on":""}">${d}</button>`).join("")}</div>
   <div class="qbud"><div class="qbl"><span class="eb">${D.deal=="Продажа"?"Бюджет покупки":"Сколько готов платить в месяц"}</span><b id="qB">${money2(D.deal,D.max)}</b></div>
    <input type="range" id="qR" min="0" max="100" value="${maxToV(D.deal,D.max)}" aria-label="Бюджет"><div class="qsc"><span>${money2(D.deal=="Всё"?"Аренда":D.deal,BUD[D.deal=="Всё"?"Аренда":D.deal][0])}</span><span>без ограничения</span></div></div>
-  <div class="eb">Тип</div><div class="ochips sm">${TYPES.map(t=>`<button data-qt="${t}" class="${D.types.includes(t)?"on":""}">${t}</button>`).join("")}</div>
+  <div class="eb">Тип</div><div class="ochips sm"><button data-qt="*" class="${D.types.length?"":"on"}">Все типы</button>${TYPES.map(t=>`<button data-qt="${t}" class="${D.types.includes(t)?"on":""}">${t}</button>`).join("")}</div>
   <div class="eb">Районы</div><div id="dwrap">${c.id=="krd"?distMap(D.districts,counts()):`<p class="m">Районы появятся с запуском города.</p>`}</div>
   <div class="qact"><button class="btn" id="qGo">Показать</button><button class="btn s" id="qSave">${ic("bell",16)}Сохранить запрос</button></div>
   <p class="m" style="font-size:11px">Сохранённый запрос — это подписка: новое по нему придёт пушем. Карта — художественная схема, не в масштабе.</p>`));bind()};
@@ -3983,7 +4080,7 @@ function qSheet(){const D={...S.q,types:[...S.q.types],districts:[...S.q.distric
  const bindMap=()=>$$("#dwrap [data-dz]").forEach(g=>g.onclick=()=>{const n=g.dataset.dz;D.districts.includes(n)?D.districts.splice(D.districts.indexOf(n),1):D.districts.push(n);buzz(5);refresh();upd()});
  const bind=()=>{$$("[data-qd]").forEach(b=>b.onclick=()=>{D.deal=b.dataset.qd;D.max=null;draw()});
   const R=$("#qR");R.oninput=()=>{D.max=vToMax(D.deal,+R.value);$("#qB").textContent=money2(D.deal,D.max);R.style.setProperty("--p",R.value+"%");upd();if(+R.value%5==0)buzz(3)};R.style.setProperty("--p",R.value+"%");
-  $$("[data-qt]").forEach(b=>b.onclick=()=>{const t=b.dataset.qt;D.types.includes(t)?D.types.splice(D.types.indexOf(t),1):D.types.push(t);b.classList.toggle("on");upd();refresh()});bindMap();
+  $$("[data-qt]").forEach(b=>b.onclick=()=>{const t=b.dataset.qt;if(t=="*"){D.types.length=0;draw();return}D.types.includes(t)?D.types.splice(D.types.indexOf(t),1):D.types.push(t);b.classList.toggle("on");upd();refresh()});bindMap();
   $("#qGo").onclick=()=>{S.q=D;closeSheet();go("feed")};$("#qSave").onclick=()=>{S.q=D;addSub(qLabel(),c.n);closeSheet();go("feed")};upd()};
  draw()}
 
@@ -4018,7 +4115,7 @@ function payFlow10(i){const t=TIERS[i],sum=TPRICE[i];const el=document.createEle
 
 // ---------- СООБЩЕНИЯ: сделки, Маркет, брокер — в одном месте
 S.mtab="Все";
-const MKR={"Ремонт":"Здравствуйте! Сделаем замер в удобный день — завтра с 10 до 18 свободно. Скидка −10% для своих уже закреплена за вами. Какой адрес объекта?","Вывески":"Добрый день! Покажу 2–3 эскиза вывески за два дня и помогу с согласованием. Пришлите фото фасада сюда в чат.","Юрист":"Здравствуйте! Пришлите договор аренды в этот чат — проверю за один рабочий день. Для своих — 3 900 ₽, можно частично баллами.","Клининг":"Привет! После ремонта выезжаем бригадой из трёх человек, обычно за один день. Какая площадь?","Оборудование":"Добрый день! Первый месяц аренды кофемашины — 0 ₽. Подберём модель под поток гостей: сколько чашек в день ожидаете?","Съёмка":"Здравствуйте! Снимем помещение за час: фото, видео для пролёта и план. Когда удобно?"};
+const MKR={"Ремонт":"Здравствуйте! Сделаем замер в удобный день — завтра с 10 до 18 свободно. Скидка −10% для своих уже закреплена за вами. Какой адрес объекта?","Вывески":"Добрый день! Покажу 2–3 эскиза вывески за два дня и помогу с согласованием. Пришлите фото фасада сюда в чат.","Юрист":"Здравствуйте! Пришлите договор аренды в этот чат — проверю за один рабочий день. Для своих — 3 900 ₽.","Клининг":"Привет! После ремонта выезжаем бригадой из трёх человек, обычно за один день. Какая площадь?","Оборудование":"Добрый день! Первый месяц аренды кофемашины — 0 ₽. Подберём модель под поток гостей: сколько чашек в день ожидаете?","Съёмка":"Здравствуйте! Снимем помещение за час: фото, видео для пролёта и план. Когда удобно?"};
 function openMkChat(m){const id="mk"+Math.abs([...m.t].reduce((s,c)=>s*31+c.charCodeAt(0)|0,7));if(!S.chats[id])S.chats[id]={id,kind:"mk",title:m.t,who:[["Вы",""],[m.who,m.who.replace(/[«»"]/g,"")[0]]],msgs:[["sys",`Заявка из Маркета · ${m.cat}`]],docs:[],pending:m.first};S.chatId=id;go("chat")}
 const _initChat=initChat9;const CHAT9=V.chat;V.chat=()=>{const c=S.chats[S.chatId];let h=CHAT9();if(c&&c.kind=="mk")h=h.replace(/<div class="chst">[\s\S]*?<\/div>/,"").replace(/<div class="chact">[\s\S]*?<\/div>/,"");return h};
 function initChat(){_initChat();const c=S.chats[S.chatId];if(c&&c.pending){const m=$("#chm");const first=c.pending;c.pending=null;setTimeout(()=>{m.insertAdjacentHTML("beforeend",`<div class="mb them typing"><i></i><i></i><i></i></div>`);m.scrollTop=m.scrollHeight},500);setTimeout(()=>{$(".typing",m)?.remove();c.msgs.push(["them",first]);m.insertAdjacentHTML("beforeend",msgHTML(["them",first]));m.scrollTop=m.scrollHeight;soft(880,.02)},2100)}}
@@ -4031,7 +4128,7 @@ V.msgs=()=>{const deals=chatList(),mk=Object.values(S.chats).filter(c=>c.kind=="
 V.deals=()=>{S.mtab="Сделки";return V.msgs()};
 
 // ---------- МАРКЕТ — вкладка
-V.market=()=>`<div class="scroll xmk"><div class="pad"><span class="eb">Маркет для своих</span><p class="st h"><span>Бизнесы резидентов —</span> <b>по ценам для своих</b></p><p class="m2" style="margin-top:8px">Ремонт, вывески, юристы, оборудование — от тех, кто уже в клубе. Часть можно оплатить баллами.</p></div>
+V.market=()=>`<div class="scroll xmk"><div class="pad"><span class="eb">Маркет для своих</span><p class="st h"><span>Бизнесы резидентов —</span> <b>по ценам для своих</b></p><p class="m2" style="margin-top:8px">Ремонт, вывески, юристы, оборудование — от тех, кто уже в клубе. </p></div>
  <div class="pad ochips sm" style="margin-top:14px">${["Все"].concat([...new Set(MK.map(m=>m[0]))]).map(c=>`<button data-mkf="${c}" class="${c==MKF?"on":""}">${c}</button>`).join("")}</div>
  <div class="pad mk2">${MK.filter(m=>MKF=="Все"||m[0]==MKF).map((m,i)=>`<div class="mkc2" style="--i:${i}"><div class="mkt2"><span class="mkav">${m[2].replace(/[«»]/g,"")[0]}</span><div><b>${m[1]}</b><span class="m">${m[2]}</span></div></div><div class="mkp2"><span class="perk">${m[3]}</span>${m[4]?`<span class="pts">${m[4]}</span>`:""}</div><button class="btn sm" data-mkq="${MK.indexOf(m)}">Получить предложение</button></div>`).join("")}</div>
  <div class="pad" style="margin-top:14px"><button class="btn s" id="mkAdd" style="width:100%">+ Разместить свой бизнес</button><p class="m" style="margin-top:8px;font-size:11px">Компании и цены — демо. Сделки в Маркете — между участниками клуба.</p></div></div>`;
@@ -4134,7 +4231,7 @@ function coach(force){if(S.coach&&!force)return;const busy=()=>S.tab!="feed"||$(
 function authSheet(cb,why){sheet(wrapS(`<span class="eb">Вход по телефону · 20 секунд</span><p class="st"><span>${why||"Чтобы продолжить,"}</span> <b>войдите в клуб</b></p>
  <form id="au" style="display:flex;flex-direction:column;gap:12px"><input class="inp" required inputmode="tel" placeholder="+7 918 000-00-00" aria-label="Телефон"><input class="inp" required inputmode="numeric" pattern="123" placeholder="Код из SMS (в прототипе 123)" aria-label="Код из SMS">
  <label class="chk"><input type="checkbox" required><span>Даю <u data-doc="consent">согласие на обработку персональных данных</u> и принимаю <u data-doc="terms">соглашение</u></span></label><button class="btn">Войти и продолжить</button></form>
- <div class="aug"><span>Вход даёт:</span><b>запись на показы</b><b>избранное и чаты</b><b>+3 прокрута</b><b>1 заявка в Маркете</b></div><p class="m" style="font-size:11px">В прототипе SMS не отправляется — это имитация входа. Регистрация = первый вход: тариф «Бесплатно».</p>`));
+ <div class="aug"><span>Вход даёт:</span><b>запись на показы</b><b>избранное и чаты</b><b>+3 прокрута</b><b>1 заявка в Маркете</b></div><p class="m" style="font-size:11px">В прототипе SMS не отправляется — это имитация входа. Регистрация = первый вход: тариф «Вход», бесплатно.</p>`));
  $("#au").onsubmit=e=>{e.preventDefault();S.reg=true;S.spins+=3;if(S.me&&PROF[S.code]?.guest)S.me={...S.me,name:"Участник клуба",role:"участник · бесплатный тариф",init:"У"};closeSheet();drawSpin();saveSession();toast("<b>Вы в клубе</b> · +3 прокрута. Продолжаем.");setTimeout(()=>cb&&cb(),350)}}
 const isGuest=()=>!S.reg;
 function booking(...a){if(isGuest()){authSheet(()=>booking8(...a),"Чтобы записаться на показ,");return}booking8(...a)}
@@ -4142,7 +4239,7 @@ APP.addEventListener("click",e=>{if(!isGuest())return;const f=e.target.closest("
  const ch=e.target.closest('[data-chat="broker"],[data-ask]');if(ch){e.stopPropagation();e.preventDefault();authSheet(()=>ch.click(),"Чтобы написать брокеру,");return}},true);
 
 // ---------- МАРКЕТ 2: витрина для всех, заявка — участникам (1 бесплатно), без ограничений — с «Ключа»
-MK.push(["Креатив","Брендинг и креатив для вашего бизнеса","Сергей Ивашев · основатель клуба","бриф и концепция — в подарок","можно баллами"],["Ремонт","Стройка и ремонт под ключ","Артём Завадский · основатель клуба","смета за 24 часа","до 30% баллами"],["Номера","Красивые номера телефонов для бизнеса","Клуб РАЗДВАТРИ · для своих","подбор под бренд","можно баллами"]);
+MK.push(["Креатив","Брендинг и креатив для вашего бизнеса","Сергей Ивашев · основатель клуба","бриф и концепция — в подарок","+ баллы клуба за заказ"],["Ремонт","Стройка и ремонт под ключ","Артём Завадский · основатель клуба","смета за 24 часа","+ баллы клуба за заказ"],["Номера","Красивые номера телефонов для бизнеса","Клуб РАЗДВАТРИ · для своих","подбор под бренд","+ баллы клуба за заказ"]);
 Object.assign(MKR,{"Креатив":"Привет! Я Сергей. Расскажите про бизнес и помещение — предложу концепцию бренда и вывески. Бриф и первая идея — в подарок для своих.","Номера":"Здравствуйте! Подберём красивый номер под ваш бренд — например, с повтором цифр или кодом города. Какой оператор и какие цифры нравятся?"});
 const MKM={"Ремонт":"concrete","Вывески":"neon","Юрист":"paper","Клининг":"air","Оборудование":"metal","Съёмка":"film","Креатив":"ink","Номера":"gold"};
 const MKAV={"Сергей Ивашев":()=>ASSETS.ava,"Артём Завадский":()=>ASSETS.artem};
@@ -4161,7 +4258,7 @@ V.market=()=>{const cats=["Все"].concat([...new Set(MK.map(m=>m[0]))]);const 
 function mkRequest(i){const m=MK[i];const open=()=>openMkChat({cat:m[0],t:m[1],who:m[2].split(" · ")[0],first:MKR[m[0]]||"Здравствуйте! Спасибо за заявку — подготовлю предложение и напишу здесь в течение часа."});
  if(isGuest()){authSheet(()=>mkRequest(i),"Чтобы получить предложение,");return}
  if((S.tier||0)==0){if(S.mkFree>0){S.mkFree--;saveSession();buzz(8);open();setTimeout(()=>toast("Это ваша <b>бесплатная заявка</b> в Маркете. Дальше — без ограничений с тарифа «Ключ»."),2600);return}
-  sheet(wrapS(`<span class="eb">Маркет для своих</span><p class="st"><span>Понравилось?</span> <b>Дальше — с «Ключом»</b></p><p class="m2">Бесплатная заявка уже использована. С тарифом «Ключ» — заявки без ограничений, скидки резидентов и оплата баллами.</p><div class="tier cur" style="pointer-events:none"><div class="th"><b>Ключ</b></div><div class="tp">3 990 ₽/мес</div><ul>${TIERS[1][4].map(x=>`<li>${x}</li>`).join("")}</ul></div><button class="btn" id="mkUp">Перейти на «Ключ»</button>`));$("#mkUp").onclick=()=>{closeSheet();S.afterPayMk=i;setTimeout(()=>payFlow(1),280)};return}
+  sheet(wrapS(`<span class="eb">Маркет для своих</span><p class="st"><span>Понравилось?</span> <b>Дальше — с «Ключом»</b></p><p class="m2">Бесплатная заявка уже использована. С тарифом «Ключ» — заявки без ограничений, скидки резидентов и баллы клуба за заказы.</p><div class="tier cur" style="pointer-events:none"><div class="th"><b>Ключ</b></div><div class="tp">3 990 ₽/мес</div><ul>${TIERS[1][4].map(x=>`<li>${x}</li>`).join("")}</ul></div><button class="btn" id="mkUp">Перейти на «Ключ»</button>`));$("#mkUp").onclick=()=>{closeSheet();S.afterPayMk=i;setTimeout(()=>payFlow(1),280)};return}
  buzz(8);open()}
 
 // ---------- ТАРИФЫ: «Связка» спрашивает название агентства; после оплаты — в нужное место
@@ -4222,9 +4319,9 @@ const EIC={like:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5
 const ESHORT={like:"Лайки",share:"Поделиться",book:"Запись",visit:"Показ",review:"Отзыв",deal:"Сделка"};
 function shadeHTML(){const lock=!S.reg,m=mult();return `<div class="shin v12"><div class="shtop"><div class="xring" id="shRing">${ringHTML(S.spins,1)}</div><div class="sht"><span class="eb">Бонусная игра</span><b>Действуешь — крутишь</b></div><button class="shx" id="shX" aria-label="Закрыть">×</button></div>
  ${lock?`<div class="shlock"><p class="st"><span>Войдите —</span> <b>3 прокрута в подарок</b></p><button class="btn" id="shReg">Войти по телефону</button></div>`:spinHTML()}
- <div class="shpills"><button data-wallet><b class="wallet-n">${fmt(S.pts)}</b><span>баллов · 1 = 1 ₽</span></button><button data-tiers><b>${TIERS[S.tier||0][0]}</b><span>баллы ×${m}</span></button></div>
+ <div class="shpills"><button data-wallet><b class="wallet-n">${fmt(S.pts)}</b><span>баллов клуба</span></button><button data-tiers><b>${TIERS[S.tier||0][0]}</b><span>баллы ×${m}</span></button></div>
  <div class="earn12"><span class="eb">Прокруты за действия</span><div class="eg">${EARN.map((e,k)=>`<button data-e12="${k}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${EIC[e[0]]||""}</svg><b>${e[0]=="like"?"3 = +1":"+"+e[3]}</b><span>${ESHORT[e[0]]||e[1]}</span>${e[4]?`<i>+${fmt(e[4]*m)} б.</i>`:""}</button>`).join("")}</div><p class="edet" id="eDet">Тапни плитку — подскажем, за что</p></div>
- <p class="shfine">Баллы — скидка на услуги клуба, не деньги. <u data-doc="game">Правила</u></p></div><div class="shgrab" aria-label="Потяните вверх, чтобы закрыть"><i></i></div>`}
+ <p class="shfine">Баллы — клубная валюта, не деньги. <u data-doc="game">Правила</u></p></div><div class="shgrab" aria-label="Потяните вверх, чтобы закрыть"><i></i></div>`}
 const _shadeOpen9=shadeOpen9;
 function shadeOpen(fromDrag){const sh=_shadeOpen9(fromDrag);$("#shX",sh)&&($("#shX",sh).onclick=shadeClose);
  $$("[data-e12]",sh).forEach(b=>b.onclick=()=>{const e=EARN[+b.dataset.e12];$$("[data-e12]",sh).forEach(x=>x.classList.toggle("on",x==b));$("#eDet",sh).innerHTML=`<b>${e[1]}</b> · ${e[2].replace(/\+(\d[\d ]*) баллов/,(q,n)=>"+"+fmt(+n.replace(/ /g,"")*mult())+" баллов")}`;buzz(4)});
@@ -4284,7 +4381,7 @@ function ringSync(){const r=$("#xring");if(r&&typeof ringHTML=="function")r.inne
 
 // «Как получить прокруты» — без слов о случайных призах
 earnSheet=function(){sheet(wrapS(`<span class="eb">Прокруты и баллы</span><h2 class="H" style="font-size:23px">Действуешь — крутишь</h2>
- <p class="m">Каждый прокрут даёт новый логотип в шапке и одинаковую награду — ${FIX*mult()} баллов${mult()>1?` (×${mult()} по тарифу)`:""}. Баллы — скидка на услуги клуба, не деньги.</p>
+ <p class="m">Каждый прокрут даёт новый логотип в шапке и одинаковую награду — ${FIX*mult()} баллов${mult()>1?` (×${mult()} по тарифу)`:""}. Баллы — клубная валюта, не деньги.</p>
  ${EARN.map(e=>`<div class="li step"><div><div class="t">${e[1]}</div><div class="m">${e[2]}</div></div>${e[0]=="deal"?`<span class="chip c3">супер-бонус</span>`:""}</div>`).join("")}`))};
 
 // карточка «моя комбинация» для соцсетей и мессенджеров
@@ -4444,7 +4541,6 @@ function recordCircle(c){const el=document.createElement("div");el.className="cr
 // =================== v13 · новые категории коммерции: промка, производства, земля, склады, ГАБ, готовый бизнес ===================
 // Демо-объекты без фото: в ленте — визуализация-заглушка с пометкой. Фото подставим, когда сгенерируем.
 OBJ.push(
- {id:21,t:"Производственный цех",type:"Производство",deal:"Аренда",street:"Ростовское шоссе",addr:"Ростовское шоссе, 30",area:1800,price:630000,kind:"warehouse",x:24,y:14,days:2,demo:1},
  {id:22,t:"Промышленная база с ж/д веткой",type:"Промка",deal:"Продажа",street:"Уральская",addr:"Уральская, 75",area:6500,price:210000000,kind:"warehouse",x:86,y:58,days:4,demo:1},
  {id:23,t:"Кофейня с оборудованием и командой",type:"Готовый бизнес",deal:"Продажа",street:"Красная",addr:"Красная, 176",area:64,price:3900000,kind:"hall",x:48,y:55,days:1,demo:1},
  {id:24,t:"Участок под склад у М-4",type:"Земля",deal:"Продажа",street:"Знаменский",addr:"Знаменский, Новороссийская",area:12000,price:48000000,kind:"land",x:92,y:66,days:6,demo:1});
@@ -4860,13 +4956,13 @@ new MutationObserver(()=>{const b=$("#snd");if(b&&b.textContent!=(S.sound?"♪ �
 // Любой оттенок по всей шкале. Между Песком и Графитом — вечер: фон темнеет по шагам, текст переключается со тёмного на светлый на середине (v19).
 // В каждой теме три материала: основа, второй материал для 1–2 крупных блоков (mat2), акцент главной кнопки (fill) + огонёк.
 const DIMP={
- clay:{bg:"#E7E2D8",b2:"#F1EDE6",b3:"#DCD5C9",ink:"#1E1C19",mut:"#746E64",line:"#D2CBBE",a1:"#2A2724",on1:"#F4F0E9",
+ clay:{bg:"#E7E2D8",b2:"#F1EDE6",b3:"#DCD5C9",ink:"#1E1C19",mut:"#625C53",line:"#D2CBBE",a1:"#2A2724",on1:"#F4F0E9",
   "rub-c1":"#F5F1EA","rub-c2":"#E2DBCF","fill-c1":"#3A3632","fill-c2":"#22201D",led:"#C9F24B","led-off":"#CFC8BB",raz:"#2BD07A",dva:"#FFFFFF",tri:"#E7B85A",
   mat2a:"#D5DBCA",mat2b:"#B4BEA7",onmat2:"#1F231D",sky1:"#E6E2DA",sky2:"#F3F0EA",wall:"#D9D2C5",wall2:"#C9C0B1",win:"#FBF9F5",floor:"#E4DED3",sacc:"#8C8173",glow:"#8C8173"},
- sand:{bg:"#D6C3A4",b2:"#E3D4BC",b3:"#C9B493",ink:"#2B2219",mut:"#79664F",line:"#C3AE8E",a1:"#3A2D22",on1:"#F6EBDA",
+ sand:{bg:"#D6C3A4",b2:"#E3D4BC",b3:"#C9B493",ink:"#2B2219",mut:"#5E4D39",line:"#C3AE8E",a1:"#3A2D22",on1:"#F6EBDA",
   "rub-c1":"#EADDC7","rub-c2":"#CCB796","fill-c1":"#5B4431","fill-c2":"#34271C",led:"#FFC25C","led-off":"#BDA683",raz:"#FF8A3D",dva:"#FFF4E2",tri:"#FFC25C",
   mat2a:"#8E6D4E",mat2b:"#6A4E36",onmat2:"#F7EBDB",sky1:"#E3D3B8",sky2:"#EFE4D1",wall:"#D3BE9D",wall2:"#BFA784",win:"#F7EEDF",floor:"#DAC7A6",sacc:"#8A6A4C",glow:"#8A6A4C"},
- graphite:{bg:"#1B1917",b2:"#25221F",b3:"#2E2A26",ink:"#EFEBE3",mut:"#A1998D",line:"#34302B",a1:"#C9AE7C",on1:"#1C1712",
+ graphite:{bg:"#1B1917",b2:"#25221F",b3:"#2E2A26",ink:"#EFEBE3",mut:"#B3AB9F",line:"#34302B",a1:"#C9AE7C",on1:"#1C1712",
   "rub-c1":"#332E2A","rub-c2":"#1F1C19","fill-c1":"#DCC496","fill-c2":"#A88B5A",led:"#D6FF4A","led-off":"#3B3732",raz:"#2BD07A",dva:"#F4F1EA",tri:"#E7B85A",
   mat2a:"#433A31",mat2b:"#29231E",onmat2:"#F0E6D6",sky1:"#2B2825",sky2:"#1F1D1B",wall:"#3B3632",wall2:"#2F2B28",win:"#4C463F",floor:"#272420",sacc:"#8F7A55",glow:"#8F7A55"}};
 const DIMKEYS=Object.keys(DIMP.clay);
@@ -4881,7 +4977,7 @@ const dimNow=()=>S.dimAuto?(autoMode()=="day"?0:2):S.dim;
 const TXTK=["ink","mut","a1","on1","fill-c1","fill-c2","led","raz","dva","tri","onmat2"]; // текст и акценты: не смешиваем, переключаем на середине
 function dimPal(t){if(t>=1.98)return {p:DIMP.graphite,skin:"graphite",k:1};
  if(t>1){const k=t-1,dark=k>=.5,p={};const A=dark?DIMP.graphite:DIMP.sand,B=dark?DIMP.sand:DIMP.graphite,m=dark?(1-k)*.6:k*.6; // v19: вечер — Песок темнеет к Графиту по шагам
-  DIMKEYS.forEach(x=>p[x]=TXTK.includes(x)?A[x]:mixC(A[x],B[x],m));return {p,skin:dark?"graphite":"sand",k:1}}
+  DIMKEYS.forEach(x=>p[x]=TXTK.includes(x)?A[x]:mixC(A[x],B[x],m));p.mut=mixC(A.mut,A.ink,Math.min(.75,.4+m*1.1));return {p,skin:dark?"graphite":"sand",k:1}}
 const k=Math.max(0,Math.min(1,t));const p={};DIMKEYS.forEach(x=>p[x]=mixC(DIMP.clay[x],DIMP.sand[x],k));p.onmat2=k<.7?DIMP.clay.onmat2:DIMP.sand.onmat2;/* текст на втором материале не смешиваем — переключаем */return {p,skin:k<.5?"clay":"sand",k}}
 const anchorOf=t=>t>1.5?"graphite":t<.5?"clay":"sand";
 paintMode=function(){const {p,skin}=dimPal(dimNow());const mode=skin=="graphite"?"night":"day";CITY.forEach(c=>{const q=c[mode]||c.night;Object.assign(c.t,q.t,{bg:p.bg,b2:p.b2,b3:p.b3,ink:p.ink,mut:p.mut,line:p.line,a1:p.a1,on1:p.on1,sky1:p.sky1,sky2:p.sky2,wall:p.wall,wall2:p.wall2,win:p.win,floor:p.floor,sacc:p.sacc,glow:p.glow});c.wm=[...q.wm];c.glow=[...q.glow]})};
@@ -4982,7 +5078,7 @@ function inviteWelcome(next){const el=document.createElement("div");el.className
  <p class="m">Номер — навсегда ваш. Статус «Резидент» и тариф «Ключ» — месяц в подарок. Приглашение можно отдать одному человеку.</p>
  <button class="btn iv-go">Дальше</button></div>`;
  requestAnimationFrame(()=>el.classList.add("on"));setTimeout(()=>{SND.win();buzz([10,40,14])},420);
- $(".iv-go",el).onclick=()=>{el.classList.add("out");APP.classList.remove("locked");setTimeout(()=>{el.remove();next()},500)}}
+ $(".iv-go",el).onclick=()=>{next();requestAnimationFrame(()=>requestAnimationFrame(()=>{el.classList.add("out");APP.classList.remove("locked")}));setTimeout(()=>el.remove(),650)}} // v21: следующий экран — под билетом, без «спойлера» ленты
 // номер участника на клубной карте для приглашённого
 const _card16=clubCardHTML;clubCardHTML=function(){const h=_card16();return S.code=="0148"?h.replace(/№ \d{3,4}/,"№ 0148"):h};
 // =================== v16 · онбординг: «Ноль · Раз · Два · Три» ===================
@@ -5474,7 +5570,7 @@ const EN={
 "Шоурум на Навагинской": "Showroom on Navaginskaya",
 "Эксклюзив": "Exclusive",
 "Этажи": "Floors",
-"Юг": "the South",
+"Юг": "South",
 "Я собственник или действую по договору с ним. На фото нет людей, номеров машин и чужих данных.": "I am the owner or act under an agreement with them. The photos show no people, license plates or other people’s data.",
 "авг": "Aug",
 "демо": "demo",
@@ -5718,7 +5814,7 @@ const EN={
 "· запрос в три касания": "· request in three taps",
 "· место": "· seat",
 "· первая сотня": "· The First Hundred",
-"Авто · день": "Cars · day",
+"Авто · день": "Auto · day",
 "Анна Лебедева · Кофейня «Зерно»": "Anna Lebedeva · “Zerno” Coffee House",
 "Архив:": "Archive:",
 "Б": "B",
@@ -6397,7 +6493,7 @@ const EN={
 "Номер в подарок получают резиденты клуба. Можно купить и без вступления — пришлём подборку и цену.": "Club Residents get a number as a gift. You can also buy one without joining — we'll send a selection and the price.",
 "Номер — навсегда ваш. Статус «Резидент» и тариф «Ключ» — месяц в подарок. Приглашение можно отдать одному человеку.": "The number is yours forever. “Resident” status and the “Key” plan — one month free. The invitation can go to one person.",
 "Номера": "Numbers",
-"Объект на модерации.": "Property under moderation.",
+"Объект на модерации.": "Property under review.",
 "Объекты": "Properties",
 "Объекты агентства": "Agency properties",
 "Оплатить": "Pay",
@@ -6837,7 +6933,7 @@ const EN={
 "Цены «для своих» в Маркете": "Insider prices in the Market",
 "Черёмушки": "Cheryomushki",
 "Чт": "Thu",
-"Что даёт:": "What you get:",
+"Что даёт:": "What it gives:",
 "Швейцарский хронограф": "Swiss chronograph",
 "Этот формат здесь не сохранить — отправьте внутри приложения": "This format can't be saved here — send it inside the app",
 "ЮМР": "Yubileyny (YuMR)",
@@ -6932,7 +7028,39 @@ const EN={
 "Войти по личному коду": "Sign in with your code",
 "уже в клубе": "already in the Club",
 "Зарегистрироваться": "Sign up",
-"по телефону · +3 прокрута": "by phone · +3 spins"
+"по телефону · +3 прокрута": "by phone · +3 spins",
+"+ баллы клуба за заказ": "+ Club points per order",
+"× Сбросить": "× Reset",
+"Авто · ночь": "Auto · night",
+"Базовая": "Base",
+"Баллы — клубная валюта, не деньги.": "Points are Club currency, not money.",
+"Бесплатная заявка уже использована. С тарифом «Ключ» — заявки без ограничений, скидки резидентов и баллы клуба за заказы.": "Your free request is used. With the “Key” plan — unlimited requests, Resident discounts and Club points for orders.",
+"Глина · Песок · Графит": "Clay · Sand · Graphite",
+"Карбон": "Carbon",
+"Коллекция": "Collection",
+"Рекомендуем": "Recommended",
+"Розовая": "Pink",
+"Сейчас у вас «Вход» — бесплатно. «Ключ» можно включить в любой момент.": "You’re on “Entry” — free. Turn on “Key” any time.",
+"Чат по объекту": "Chat about this property",
+"Что это значит:": "What it means:",
+"баллов клуба": "Club points",
+"баллы — клубная валюта: темы оформления, прокруты, продвижение и закреп объектов, места на клубных встречах": "points are Club currency: themes, spins, property promotion and pinning, seats at Club meetups",
+"без изменений": "unchanged",
+"кредиты дорогие, поэтому бизнес чаще арендует, чем покупает, а собственникам выгоднее сдавать.": "loans are expensive, so businesses rent more than they buy, and owners do better leasing out.",
+"открыта": "unlocked",
+"включена": "on",
+"тема города · Розовая · Карбон": "city theme · Pink · Carbon",
+"Вернуть": "Revert",
+"С подпиской «Ключ» тема города — бесплатно.": "With the “Key” plan, the city theme is free.",
+"Тема ": "Theme ",
+" — ваша": " — it’s yours",
+"Место на клубной встрече": "Seat at a Club meetup",
+"Регистрация = первый вход: тариф «Вход», бесплатно.": "Sign-up = first sign-in: the “Entry” plan, free.",
+" · это клубная валюта: темы, прокруты, продвижение объектов. Кошелёк — в Профиле.": " · Club currency: themes, spins, property promotion. Your wallet is in Profile.",
+"Как попасть:": "How to get in:",
+"места распределяют основатели.": "seats are assigned by the Founders.",
+"номер в зале клуба, пожизненный статус, приоритет в ленте, закрытые встречи.": "a numbered seat in the Club hall, lifetime status, priority in the Feed, private meetups.",
+"Память браузера заполнена — фото объекта не сохранится после перезапуска": "Browser storage is full — the property photo won’t persist after restart"
 },
 "t": {
 "IV кв. {0}": "Q4 {0}",
@@ -7255,7 +7383,19 @@ const EN={
 "+{0} баллов, статус «Партнёр», бесплатная упаковка следующего объекта.": "+{0} points, “Partner” status, free packaging for your next property.",
 "от {0} ₽ / мес": "from ₽{0} / mo",
 "Продвижение в ленте на {0} дней": "Promotion in the Feed for {0} days",
-"Закреп на {0} дней": "Pin for {0} days"
+"Закреп на {0} дней": "Pin for {0} days",
+"{0} баллов": "{0} points",
+"Каждый прокрут даёт новый логотип в шапке и одинаковую награду — {0} баллов (×{1} по тарифу). Баллы — клубная валюта, не деньги.": "Each spin gives a new header logo and the same reward — {0} points (×{1} by plan). Points are Club currency, not money.",
+"Каждый прокрут даёт новый логотип в шапке и одинаковую награду — {0} баллов. Баллы — клубная валюта, не деньги.": "Each spin gives a new header logo and the same reward — {0} points. Points are Club currency, not money.",
+"Последнее решение ЦБ — {0}.{1}: ставку сохранили.": "Latest Central Bank decision — {0}.{1}: rate held.",
+"с {0}.{1}": "since {0}.{1}",
+"с «Ключа» · или {0} б.": "free with “Key” · or {0} pts",
+"Примерка · {0}": "Try-on · {0}",
+"Оставить · {0} баллов": "Keep · {0} points",
+"Нужно {0} баллов, у вас {1}. Баллы — за показы, прокруты и активность в клубе.": "You need {0} points, you have {1}. Earn points for viewings, spins and Club activity.",
+"+{0} баллов": "+{0} points",
+" — первые {0} участников клуба. Номер места — навсегда ваш.": " — the first {0} Club members. Your seat number is yours forever.",
+"+{0} прокрута барабана": "+{0} Reel spins"
 }
 };
 const CYR=/[А-Яа-яЁё]/;
@@ -7331,6 +7471,120 @@ APP.addEventListener("click",e=>{if(e.target.closest("#gJoin")){e.stopImmediateP
 // шторка: тёмный экран с первого кадра, пока не появилась заставка (раньше на долю секунды мелькал главный экран)
 const _intro20=intro;intro=function(done){const r=_intro20(done);requestAnimationFrame(()=>$("#boot20")?.remove());return r};
 setTimeout(()=>{const b=$("#boot20");if(b){b.style.transition="opacity .5s";b.style.opacity=0;setTimeout(()=>b.remove(),600)}},3500); // на случай, если заставки нет
+// =================== v21 · коллекция тем: Город · Розовая · Карбон ===================
+// Базовые темы (Глина · Песок · Графит со шкалой) — бесплатно. Коллекция поверх шкалы:
+// «Город» — своя тема у каждого города (Краснодар, Москва, Юг); с платной подписки («Ключ» и выше) — бесплатно, гостю — за баллы.
+// «Розовая» и «Карбон» — за баллы. Закрытые темы можно примерить на 10 секунд. Баллы — не деньги.
+const TH21={city:{krd:{skin:"graphite",p:{bg:"#22402F",b2:"#2A4A37",b3:"#30533E",ink:"#F3F0DE",mut:"#C9D4BD",line:"#3B5D46",a1:"#E4C46C",on1:"#1D3326","rub-c1":"#3A5E45","rub-c2":"#1B3425","fill-c1":"#EBCF7E","fill-c2":"#B8913D",led:"#F4D47C","led-off":"#456650",raz:"#3EE08A",dva:"#FFF6DE",tri:"#F4D47C",mat2a:"#C29A45",mat2b:"#94712A",onmat2:"#121B10",sky1:"#2C4A37",sky2:"#22402F",wall:"#33563F",wall2:"#2A4A35",win:"#4C6E55",floor:"#26432F",sacc:"#C29A45",glow:"#C29A45"}},msk:{skin:"clay",p:{bg:"#E6DCCF",b2:"#F1E9DF",b3:"#DACDBE",ink:"#2A1714",mut:"#58403A",line:"#D3C2B2",a1:"#3A1A16",on1:"#FBF1E7","rub-c1":"#F4EDE4","rub-c2":"#D8C9B9","fill-c1":"#B3352D","fill-c2":"#7E1D18",led:"#FF2E3F","led-off":"#CDBBAA",raz:"#FF2E3F",dva:"#FFE9B8",tri:"#E8B94C",mat2a:"#A8302A",mat2b:"#741C17",onmat2:"#FBEFE4",sky1:"#E9E0D5",sky2:"#F4EEE6",wall:"#DACCBD",wall2:"#C6B39F",win:"#FBF7F2",floor:"#E2D7CA",sacc:"#A8302A",glow:"#E8B94C"}},sch:{skin:"clay",p:{bg:"#D5EAE6",b2:"#E6F4F1",b3:"#C6DFDA",ink:"#0F2E2C",mut:"#30504C",line:"#BFD9D4",a1:"#0E3A39",on1:"#EEF9F7","rub-c1":"#EAF7F4","rub-c2":"#C2DDD8","fill-c1":"#1F6E6C","fill-c2":"#0F4846",led:"#36D9C8","led-off":"#B5D3CE",raz:"#36D9C8",dva:"#FFFFFF",tri:"#FF8A66",mat2a:"#FFB896",mat2b:"#F0835F",onmat2:"#3A1A10",sky1:"#DDF0EC",sky2:"#EEF8F6",wall:"#CFE5E0",wall2:"#BAD6D0",win:"#F7FCFB",floor:"#D9ECE8",sacc:"#2E7C78",glow:"#FF8A66"}}},pink:{skin:"clay",p:{bg:"#F6D7E2",b2:"#FBE7EF",b3:"#F0C6D4",ink:"#3A1328",mut:"#7A3F62",line:"#EDBFD0",a1:"#4A1431",on1:"#FFF2F8","rub-c1":"#FDEAF2","rub-c2":"#EFC2D3","fill-c1":"#D63A84","fill-c2":"#A91B62",led:"#FF3D9E","led-off":"#EBBDCE",raz:"#FF3D9E",dva:"#FFD6EA",tri:"#FF86C2",mat2a:"#DC4F98",mat2b:"#B02A72",onmat2:"#FFF6FA",sky1:"#F9E1EA",sky2:"#FDEFF4",wall:"#F1CCDA",wall2:"#E5B3C6",win:"#FFF8FB",floor:"#F5D9E3",sacc:"#C93D86",glow:"#FF3D9E"}},carbon:{skin:"graphite",p:{bg:"#111315",b2:"#181B1E",b3:"#1F2226",ink:"#F2F4F5",mut:"#AEB5BB",line:"#2A2E33",a1:"#FF6A00",on1:"#111315","rub-c1":"#24272B","rub-c2":"#0F1113","fill-c1":"#FF7A1A","fill-c2":"#D94F00",led:"#FF6A00","led-off":"#2E3238",raz:"#FF6A00",dva:"#F2F4F5",tri:"#FFB070",mat2a:"#FF7A1A",mat2b:"#D94F00",onmat2:"#111315",sky1:"#1A1D20",sky2:"#111315",wall:"#202327",wall2:"#181B1E",win:"#33383E",floor:"#15181B",sacc:"#FF6A00",glow:"#FF6A00"}}};
+const THN21={city:"Город",pink:"Розовая",carbon:"Карбон"},THP21={city:1000,pink:1500,carbon:1500},CITYN21={krd:"Краснодар",msk:"Москва",sch:"Юг"};
+S.theme=(()=>{try{return localStorage.getItem("rdt.theme")||null}catch(e){return null}})();
+S.owned=new Set((()=>{try{return JSON.parse(localStorage.getItem("rdt.themes")||"[]")}catch(e){return[]}})());
+const saveTh21=()=>{try{S.theme?localStorage.setItem("rdt.theme",S.theme):localStorage.removeItem("rdt.theme");localStorage.setItem("rdt.themes",JSON.stringify([...S.owned]))}catch(e){}};
+const cityFree21=()=>(S.tier||0)>=1; // «Город» — бесплатно с «Ключа»
+const owns21=k=>S.owned.has(k)||(k=="city"&&cityFree21());
+const thNow21=()=>S._try||(S.theme&&owns21(S.theme)?S.theme:null);
+let _thCity21=null;
+const thPal21=k=>k=="city"?(TH21.city[CITY[_thCity21??S.city]?.id]||TH21.city.krd):TH21[k];
+const _dimPal21=dimPal;dimPal=function(t){const k=thNow21();if(k){const T=thPal21(k);return {p:T.p,skin:T.skin,k:T.skin=="graphite"?1:0}}return _dimPal21(t)};
+const _apply21=applyTheme;applyTheme=function(i,show){if(typeof i=="number")_thCity21=i;const r=_apply21(i,show);const k=thNow21();
+ APP.dataset.th=k?(k=="city"?"city-"+(CITY[_thCity21??S.city]?.id||"krd"):k):"";return r};
+// шкала «Свет» возвращает к базовым темам
+const _setDim21=setDim;setDim=function(t,o){if(S.theme&&!S._try){S.theme=null;saveTh21()}return _setDim21(t,o)};
+const _setDimAuto21=setDimAuto;setDimAuto=function(on){if(S.theme&&!S._try){S.theme=null;saveTh21()}return _setDimAuto21(on)};
+// ряд «Коллекция» в Пульте (не в онбординге)
+const thSw21=k=>{const T=k=="base"?{p:dimPal(0).p}:thPal21(k);const p=k=="base"?DIMP.clay:T.p;return `<i class="sw21" style="--a:${p.bg};--b:${p["fill-c1"]};--c:${p.led}"></i>`};
+const thTile21=k=>{const on=k=="base"?!S.theme:S.theme==k,own=k=="base"||owns21(k);
+ const nm=k=="base"?"Базовая":k=="city"?CITYN21[CITY[S.city]?.id]||"Город":THN21[k];
+ const st=k=="base"?"Глина · Песок · Графит":own?(on?"включена":"открыта"):k=="city"?`с «Ключа» · или ${fmt(THP21[k])} б.`:`${fmt(THP21[k])} баллов`;
+ return `<button class="th21${on?" on":""}${own?"":" lock"}" data-th21="${k}">${thSw21(k)}<b>${nm}</b><span>${own?"":'<i class="lk21"></i>'}${st}</span></button>`};
+const collHTML21=()=>`<div class="coll21"><div class="coll21h"><span class="eb">Коллекция</span><span class="m">тема города · Розовая · Карбон</span></div><div class="coll21g">${["base","city","pink","carbon"].map(thTile21).join("")}</div></div>`;
+const _pult21=pultHTML;pultHTML=function(c){const h=_pult21(c);return c?h:h+collHTML21()};
+const refreshColl21=()=>{const g=$(".coll21");if(g)g.outerHTML=collHTML21()};
+function setTheme21(k){S.theme=k;saveTh21();APP.classList.add("dimfx");applyTheme(S.city);setTimeout(()=>APP.classList.remove("dimfx"),700);refreshColl21()}
+// примерка: 10 секунд, потом «Оставить» или «Вернуть»
+let tryT21=0;
+function tryOn21(k){endTry21(true);S._try=k;closeSheet();APP.classList.add("dimfx");applyTheme(S.city);setTimeout(()=>APP.classList.remove("dimfx"),700);SND.chime();
+ const nm=k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k],pr=THP21[k];
+ const b=document.createElement("div");b.className="try21";b.innerHTML=`<div class="try21i"><span class="eb">Примерка · ${nm}</span><i class="try21bar"></i>
+  <div class="try21b"><button class="btn" data-try21="keep">Оставить · ${fmt(pr)} баллов</button><button class="glink16" data-try21="back">Вернуть</button></div>${k=="city"?'<p class="m">С подпиской «Ключ» тема города — бесплатно.</p>':""}</div>`;
+ APP.appendChild(b);requestAnimationFrame(()=>b.classList.add("on"));tryT21=setTimeout(()=>endTry21(),10000)}
+function endTry21(silent){clearTimeout(tryT21);const b=$(".try21");if(b){b.classList.remove("on");setTimeout(()=>b.remove(),350)}if(S._try){S._try=null;APP.classList.add("dimfx");applyTheme(S.city);setTimeout(()=>APP.classList.remove("dimfx"),700);if(!silent)SND.down()}}
+APP.addEventListener("click",e=>{const t=e.target.closest("[data-th21]");if(t){e.stopImmediatePropagation();const k=t.dataset.th21;SND.tok();
+  if(k=="base"){setTheme21(null);return}if(owns21(k)){setTheme21(k);return}tryOn21(k);return}
+ const a=e.target.closest("[data-try21]");if(!a)return;e.stopImmediatePropagation();const k=S._try;if(!k)return;
+ if(a.dataset.try21=="back"){endTry21();return}
+ const pr=THP21[k];if(S.pts<pr){toast(`Нужно ${fmt(pr)} баллов, у вас ${fmt(S.pts)}. Баллы — за показы, прокруты и активность в клубе.`,2600);return}
+ S.pts-=pr;S.hist.unshift([`Тема «${k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k]}»`,-pr,"сейчас"]);S.owned.add(k);S._try=null;clearTimeout(tryT21);
+ const b=$(".try21");if(b){b.classList.remove("on");setTimeout(()=>b.remove(),350)}S.theme=k;saveTh21();applyTheme(S.city);SND.win();toast(`Тема <b>${k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k]}</b> — ваша`,2000);typeof pulseWallet=="function"&&pulseWallet()},true);
+setTimeout(()=>{if(thNow21())applyTheme(S.city)},0);
+window.__RDT_dim=setDim;
+// =================== v21 · правки по отзыву с iPhone ===================
+// --- поля ввода: «отклик» на клавишах щёлкал скрытой галочкой и уводил фокус — клавиатура закрывалась. Пока печатают — без щелчков.
+(function(){const nat=navigator.vibrate;navigator.vibrate=function(p){const a=document.activeElement;if(a&&(a.tagName=="TEXTAREA"||(a.tagName=="INPUT"&&!/checkbox|radio|range|button|submit/.test(a.type))))return false;return nat.call(navigator,p)}})();
+// --- свайп ленты: тихий мягкий «выдох» воздуха, без удара и без ноты (одинаково во всех схемах)
+SND.swipe=()=>{if(!S.sound||S.vol<=.001)return;const c=ac();if(!c||!NB)return;try{const t=c.currentTime+.005,s=c.createBufferSource();s.buffer=NB;
+ const f=c.createBiquadFilter();f.type="bandpass";f.Q.value=.6;f.frequency.setValueAtTime(320,t);f.frequency.exponentialRampToValueAtTime(820,t+.2);
+ const g=c.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.045*Math.pow(S.vol,1.5),t+.08);g.gain.exponentialRampToValueAtTime(.0001,t+.4);
+ s.connect(f).connect(g).connect(c.destination);s.start(t,Math.random()*.2);s.stop(t+.45)}catch(e){}};
+// --- звук нажатия только на настоящее нажатие: если палец поехал (прокрутка) — молчим
+(function(){let pz=null,px=0,py=0;const kill=()=>{if(pz){clearTimeout(pz);pz=null}};
+ ["press","tok"].forEach(k=>{const f=SND[k];SND[k]=function(...a){kill();pz=setTimeout(()=>{pz=null;f.apply(SND,a)},70)}});
+ document.addEventListener("pointerdown",e=>{px=e.clientX;py=e.clientY},{capture:true,passive:true});
+ document.addEventListener("pointermove",e=>{if(pz&&Math.hypot(e.clientX-px,e.clientY-py)>6)kill()},{capture:true,passive:true});
+ document.addEventListener("scroll",kill,{capture:true,passive:true})})();
+// --- конвертер валют со звуком
+APP.addEventListener("input",e=>{if(e.target.id=="cvA")SND.key()},true);
+APP.addEventListener("change",e=>{if(e.target.id=="cvF"||e.target.id=="cvT")SND.tok()},true);
+APP.addEventListener("click",e=>{if(e.target.closest("#cvS"))SND.up()},true);
+// --- шапка: при русском языке латинская надпись убирается
+wmLang=function(){const b=$("#xbrand");if(!b)return;let en=$(".wmen",b);if(S.lang=="en"){if(!en){en=document.createElement("span");en.className="wmen";en.textContent="RAZDVATRI";const w=$(".wm",b);w&&w.after(en)}}else if(en)en.remove();APP.classList.toggle("lang-en",S.lang=="en")};
+// --- имена в английской версии — латиницей
+const TR21={а:"a",б:"b",в:"v",г:"g",д:"d",е:"e",ё:"yo",ж:"zh",з:"z",и:"i",й:"y",к:"k",л:"l",м:"m",н:"n",о:"o",п:"p",р:"r",с:"s",т:"t",у:"u",ф:"f",х:"kh",ц:"ts",ч:"ch",ш:"sh",щ:"shch",ъ:"",ы:"y",ь:"",э:"e",ю:"yu",я:"ya"};
+const tlw21=w=>{const up=w===w.toUpperCase();let r=w.toLowerCase().replace(/ий$/,"y").replace(/ый$/,"y").split("").map(ch=>TR21[ch]??ch).join("");return up?r.toUpperCase():r.charAt(0).toUpperCase()+r.slice(1)};
+const NAME21=/^[А-ЯЁ][а-яё]+ (?:[А-ЯЁ][а-яё]+|[А-ЯЁ]\.)$|^[А-ЯЁ]{2,} [А-ЯЁ]{2,}$/;
+const _trS21=trS;trS=function(src){const r=_trS21(src);if(r!==src)return r;const k=src.trim();if(NAME21.test(k)){if(window.__i18nMiss)window.__i18nMiss.delete(k);return src.replace(k,k.split(" ").map(tlw21).join(" "))}return r};
+// --- карточка объекта: вместо «трёх полосок» — понятное облачко чата
+const CHAT21=`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12.5a7.5 7 0 0 1-10.6 6.4L4 20l1.3-4.2A7 7 0 0 1 4.5 12.5 7.5 7 0 0 1 20 12.5z"/><circle cx="8.6" cy="12.5" r=".6" fill="currentColor"/><circle cx="12.2" cy="12.5" r=".6" fill="currentColor"/><circle cx="15.8" cy="12.5" r=".6" fill="currentColor"/></svg>`;
+new MutationObserver(()=>{$$(".acts .ask .brk3").forEach(b=>{const p=b.parentNode;b.outerHTML=CHAT21;p.setAttribute("aria-label","Чат по объекту")})}).observe(APP,{childList:true,subtree:true});
+// --- баллы: один раз объясняем при первом начислении. Баллы — не деньги.
+(function(){const _earn=earn;earn=function(k){const p0=S.pts;const r=_earn(k);try{if(S.pts>p0&&!localStorage.getItem("rdt.ptsHint")){localStorage.setItem("rdt.ptsHint","1");
+ setTimeout(()=>toast(`<b>+${fmt(S.pts-p0)} баллов</b> · это клубная валюта: темы, прокруты, продвижение объектов. Кошелёк — в Профиле.`,4200),900)}}catch(e){}return r}})();
+// --- «Первая сотня»: что это, коротко
+const _hall21=hallSheet;hallSheet=function(...a){const r=_hall21(...a);const s=$("#sheetIn .pad")||$("#sheetIn");if(s&&!$(".h100what",s)){const d=document.createElement("div");d.className="h100what";
+ d.innerHTML=`<p class="m"><b>Первая сотня</b> — первые 100 участников клуба. Номер места — навсегда ваш.</p><ul><li><b>Как попасть:</b> места распределяют основатели.</li><li><b>Что даёт:</b> номер в зале клуба, пожизненный статус, приоритет в ленте, закрытые встречи.</li></ul>`;
+ const st=$(".st",s);st?st.after(d):s.prepend(d)}return r};
+// --- Пульс: обложка статьи про кофейню — тёплый интерьер бара
+const _pulse21=V.pulse;V.pulse=()=>{const h=_pulse21();const i=h.indexOf('<span class="pci">'),j=h.indexOf('<span class="pcg">');if(i<0||j<0||!MEDIA._297a6d11)return h;
+ return h.slice(0,i)+`<span class="pci"><img src="${MEDIA._297a6d11[3]}" alt=""></span>`+h.slice(j)};
+// --- лента: заметный сброс фильтра, когда он включён
+const qOn21=()=>S.q&&(S.q.types.length||S.q.max||S.q.districts.length);
+new MutationObserver(()=>{if(S.tab!="feed")return;const v=$("#view");if(!v||$(".qreset21",v))return;if(!qOn21())return;
+ const b=document.createElement("button");b.className="qreset21";b.innerHTML=`<span>${esc(S.q.types.slice(0,2).join(", ")||"Фильтр")}${S.q.types.length>2?"…":""}</span><b>× Сбросить</b>`;
+ b.onclick=e=>{e.stopPropagation();S.q={...S.q,types:[],max:null,districts:[]};saveSession();SND.down();go("feed")};v.appendChild(b)}).observe($("#view"),{childList:true});
+// --- «Разместить объект»: фото с телефона сжимаем, объект сохраняется и сразу виден в ленте
+const MYK21="rdt.my";try{const m=JSON.parse(localStorage.getItem(MYK21)||"[]");if(Array.isArray(m)&&m.length&&!S.my.length)S.my.push(...m)}catch(e){}
+const saveMy21=()=>{try{localStorage.setItem(MYK21,JSON.stringify(S.my))}catch(e){toast("Память браузера заполнена — фото объекта не сохранится после перезапуска",3000)}};
+const shrink21=(f,cb)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+ c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.82))};im.onerror=()=>cb(r.result);im.src=r.result};r.readAsDataURL(f)};
+APP.addEventListener("change",e=>{const inp=e.target.closest("#add .shot input");if(!inp)return;e.stopImmediatePropagation();const f=inp.files[0];if(!f)return;
+ shrink21(f,url=>{const sh=inp.closest(".shot");sh.querySelector("img")?.remove();const im=document.createElement("img");im.src=url;im.alt="";sh.prepend(im);const sp=sh.querySelector("span");if(sp)sp.textContent="";S.uploads.push(url);SND.tok()})},true);
+APP.addEventListener("submit",e=>{if(e.target.id!="add")return;const ups=[...S.uploads],n0=S.my.length;setTimeout(()=>{const o=S.my[0];if(!o||S.my.length==n0)return;o.real=true;o.likes=0;if(ups.length)o.photos=ups.slice(0,4);saveMy21();go("feed");
+ if(!qMatch(o,S.q)){S.q={...S.q,deal:"Всё",types:[],max:null,districts:[]};saveSession();go("feed")}
+ setTimeout(()=>{const c=$(`#feed [data-swipebook="${o.id}"]`)?.closest(".slide");if(c){c.scrollIntoView({block:"start"});c.classList.add("new21")}},450)},60)},true);
+// --- онбординг: тариф — рекомендация, а не подарок
+(function(){const _r=roleOnb;roleOnb=function(){_r();const el=$(".xonb16");if(!el)return;new MutationObserver(()=>{const t=$(".otier16 .eb",el);if(t&&t.textContent=="Подходит вам"){t.textContent="Рекомендуем";
+ const n=$("#obNext span",el);const sub=$(".ob-sub",el);if(sub&&!/«Вход»/.test(sub.textContent))sub.insertAdjacentHTML("afterend",`<p class="m ob-free">Сейчас у вас «Вход» — бесплатно. «Ключ» можно включить в любой момент.</p>`);
+ if(n&&n.textContent!="Начать бесплатно")n.textContent="Начать бесплатно"}}).observe(el,{childList:true,subtree:true})}})();
+// --- типографика: короткие слова и числа не отрываются от соседних (неразрывный пробел), во всём интерфейсе
+(function(){const RU=/(^|[\s«(—])(в|во|с|со|к|ко|о|об|у|и|а|но|на|по|за|из|от|до|для|без|при|не|ни|под|над|про|что|как|уже|всё|всех|это|то)\s+/giu,
+ NUM=/(\d)\s+(из|₽|м²|млн|тыс\.?|%|мин|баллов|балла|балл|прокрут\w*|дн\w*|мес\.?|ч)(?=[\s.,;:)»]|$)/gu,DASH=/\s+—/g,EN=/(^|\s)(a|an|the|of|to|in|on|at|by|for|and|or|is|with|from)\s+/gi;
+ const fix=s=>{let r=s.replace(DASH," —").replace(NUM,"$1 $2").replace(/(\d)\s+(?=\d{3}\b)/g,"$1 ");r=r.replace(RU,"$1$2 ").replace(RU,"$1$2 ");if(S.lang=="en")r=r.replace(EN,"$1$2 ").replace(EN,"$1$2 ");return r};
+ const walk=root=>{if(!root)return;if(root.nodeType==3){const p=root.parentNode;if(!p||/^(SCRIPT|STYLE|TEXTAREA|INPUT|OPTION)$/.test(p.nodeName))return;const t=fix(root.data);if(t!==root.data)root.data=t;return}
+  if(root.nodeType!=1||/^(SCRIPT|STYLE|TEXTAREA|SVG)$/i.test(root.nodeName))return;const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const L=[];while(n=tw.nextNode())L.push(n);L.forEach(walk)};
+ let q=new Set(),raf=0;new MutationObserver(ms=>{for(const m of ms){if(m.type=="characterData")q.add(m.target);else m.addedNodes.forEach(x=>q.add(x))}if(!raf)raf=requestAnimationFrame(()=>{raf=0;const s=q;q=new Set();s.forEach(x=>{if(x.isConnected)walk(x)})})}).observe(APP,{childList:true,subtree:true,characterData:true});
+ setTimeout(()=>walk(APP),0)})();
+// свои фото объекта — не «визуализация»
+const _slide21=slideHTML;slideHTML=function(o,...a){const h=_slide21(o,...a);return o&&o.real?h.replace('<span class="viz">Визуализация</span>',''):h};
 // =================== запуск ===================
 buildStrip();applyTheme(0);badge();go("home");APP.style.setProperty("--tx-velvet",`url(${ASSETS.velvet})`);APP.style.setProperty("--tx-glass",`url(${ASSETS.glass})`);APP.style.setProperty("--tx-foil",`url(${ASSETS.foil})`);
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches){splash();setTimeout(()=>onboarding(cookieBar),2500)}else onboarding(cookieBar);
