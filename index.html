@@ -2731,6 +2731,9 @@ body{padding:0!important;margin:0!important;display:block!important}
 /* ---- рост/падение на светлых темах — тёмные зелёный и красный ---- */
 .app:not([data-skin=graphite]) :is(.up,.fxd.up){color:#0E5A2F!important}
 .app:not([data-skin=graphite]) .dn{color:#8C1D14!important}
+/* ---- полноэкранная версия: на весь экран iPhone, без пустой полосы снизу ---- */
+.app.standalone{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:auto!important;height:auto!important;min-height:100lvh}
+html:has(.app.standalone),html:has(.app.standalone) body{background:var(--bg,#141414);height:100lvh;overflow:hidden}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="foilG" x1="0" y1="0" x2="1" y2=".35"><stop offset="0" stop-color="#8E6C2F"/><stop offset=".3" stop-color="#F7E3A3"/><stop offset=".42" stop-color="#FFF6D4"/><stop offset=".55" stop-color="#C9A24E"/><stop offset=".8" stop-color="#E3C67A"/><stop offset="1" stop-color="#8E6C2F"/></linearGradient></defs></svg>
 <div id="boot20" aria-hidden="true" style="position:fixed;inset:0;z-index:2147483000;background:radial-gradient(110% 75% at 50% 42%,#25231F,#0E0D0C 72%)"></div>
@@ -7589,6 +7592,10 @@ APP.addEventListener("submit",e=>{if(e.target.id!="add")return;const ups=[...S.u
  setTimeout(()=>walk(APP),0)})();
 // свои фото объекта — не «визуализация»
 const _slide21=slideHTML;slideHTML=function(o,...a){const h=_slide21(o,...a);return o&&o.real?h.replace('<span class="viz">Визуализация</span>',''):h};
+// значок чата на карточке — прямо в разметке (не только после отрисовки)
+const _xslide21=xslide;xslide=function(...a){return _xslide21(...a).replace(/(<button data-ask="[^"]*"[^>]*>)<span class="brk3"><i><\/i><i><\/i><i><\/i><\/span>/g,(m,b)=>b.replace('aria-label="Спросить брокера"','aria-label="Чат по объекту"')+CHAT21)};
+// html получает фон приложения (за пределами экрана нет тёмной полосы)
+if(APP.classList.contains("standalone")){document.documentElement.style.background=getComputedStyle(APP).backgroundColor}
 // =================== запуск ===================
 buildStrip();applyTheme(0);badge();go("home");APP.style.setProperty("--tx-velvet",`url(${ASSETS.velvet})`);APP.style.setProperty("--tx-glass",`url(${ASSETS.glass})`);APP.style.setProperty("--tx-foil",`url(${ASSETS.foil})`);
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches){splash();setTimeout(()=>onboarding(cookieBar),2500)}else onboarding(cookieBar);
