@@ -2734,6 +2734,11 @@ body{padding:0!important;margin:0!important;display:block!important}
 /* ---- полноэкранная версия: на весь экран iPhone, без пустой полосы снизу ---- */
 .app.standalone{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:auto!important;height:auto!important;min-height:100lvh}
 html:has(.app.standalone),html:has(.app.standalone) body{background:var(--bg,#141414);height:100lvh;overflow:hidden}
+/* ---- латинский леттеринг RAZDVATRI ---- */
+#xbrand .wmen{display:inline-flex;align-items:center;font-size:0;color:var(--ink)}
+#xbrand .wmen-svg{height:15px;width:auto;display:block;overflow:visible}
+.xr3 .r3en{display:inline-flex;font-size:0;color:#EFEBE3}
+.xr3 .r3en .wmen-svg{height:20px;width:auto;overflow:visible}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="foilG" x1="0" y1="0" x2="1" y2=".35"><stop offset="0" stop-color="#8E6C2F"/><stop offset=".3" stop-color="#F7E3A3"/><stop offset=".42" stop-color="#FFF6D4"/><stop offset=".55" stop-color="#C9A24E"/><stop offset=".8" stop-color="#E3C67A"/><stop offset="1" stop-color="#8E6C2F"/></linearGradient></defs></svg>
 <div id="boot20" aria-hidden="true" style="position:fixed;inset:0;z-index:2147483000;background:radial-gradient(110% 75% at 50% 42%,#25231F,#0E0D0C 72%)"></div>
@@ -4774,11 +4779,11 @@ APP.addEventListener("click",e=>{if(e.target.closest("#xidx")){buzz(6);idxSheet(
 // =================== v15 · «Мягкий свет»: три темы — Глина, Песок, Графит ===================
 // Материал — матовая резина (реф: Stem Player). Цвет живёт только в огоньках. Акценты городов остаются, фон и поверхность — от темы.
 const SKINS={
- clay:{n:"Глина",mode:"day",led:"#C9F24B",raz:"#2BD07A",dva:"#FFFFFF",tri:"#E7B85A",
+ clay:{n:"Известняк",mode:"day",led:"#C9F24B",raz:"#2BD07A",dva:"#FFFFFF",tri:"#E7B85A",
   t:{bg:"#E7E2D8",b2:"#F1EDE6",b3:"#DCD5C9",ink:"#1E1C19",mut:"#746E64",line:"#D2CBBE",a1:"#2A2724",on1:"#F4F0E9"}},
- sand:{n:"Песок",mode:"day",led:"#FFC25C",raz:"#FF8A3D",dva:"#FFF4E2",tri:"#FFC25C",
+ sand:{n:"Травертин",mode:"day",led:"#FFC25C",raz:"#FF8A3D",dva:"#FFF4E2",tri:"#FFC25C",
   t:{bg:"#D7C5A8",b2:"#E3D4BC",b3:"#CAB696",ink:"#2B2219",mut:"#7B6852",line:"#C5B192",a1:"#3A2D22",on1:"#F4E9D8"}},
- graphite:{n:"Графит",mode:"night",led:"#D6FF4A",raz:"#2BD07A",dva:"#F4F1EA",tri:"#E7B85A",
+ graphite:{n:"Базальт",mode:"night",led:"#D6FF4A",raz:"#2BD07A",dva:"#F4F1EA",tri:"#E7B85A",
   t:{bg:"#141312",b2:"#1E1D1B",b3:"#272523",ink:"#EFEBE3",mut:"#9A9389",line:"#2C2926",a1:"#E9E4DA",on1:"#171513"}}};
 const SKIN15K="rdt.skin";
 const _pick15=(()=>{try{return localStorage.getItem(SKIN15K)}catch(e){return null}})();
@@ -4997,13 +5002,13 @@ window.__RDT_mode=setMode;window.__RDT_dim=setDim;
 setInterval(()=>{if(S.dimAuto)applyTheme(S.city)},60000);
 // =================== v16 · Пульт: «Свет» и «Звук» — два фейдера рядом, как на микшере ===================
 // Фейдер — резиновая ручка в утопленной дорожке с огоньками. Фиксаторы щёлкают, огоньки отзываются звуком на своей громкости.
-const DIMNAME=t=>t>1.96?"Графит":t>1.5?"Графит · вечер":t>1.04?"Песок · вечер":t<.04?"Глина":t>.96?"Песок":t<.5?"Глина · к закату":"Песок · светлее";
+const DIMNAME=t=>t>1.96?"Базальт":t>1.5?"Базальт · сумерки":t>1.04?"Травертин · сумерки":t<.04?"Известняк":t>.96?"Травертин":t<.5?"Известняк · теплее":"Травертин · светлее"; // v21: темы — камни (решение Ива 20.10)
 function fader(id,v,{n=11,ticks=[]}={}){return `<div class="fd16" data-fd="${id}" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(v*100)}" style="--v:${v.toFixed(3)}">
  <i class="trk">${Array.from({length:n},(_,i)=>`<i class="${(n-1-i)/(n-1)<=v+.001?"on":""}"></i>`).join("")}</i><i class="knb"><i></i></i>
  ${ticks.map(([p,l])=>`<span class="tk" style="--p:${p}" data-tick="${p}">${l}</span>`).join("")}</div>`}
 function pultHTML(compact){const dv=1-dimNow()/2;
  return `<div class="pult16${compact?" cmp":""}">
- <div class="pcol"><span class="eb">Свет</span>${fader("dim",dv,{n:11,ticks:[[1,"Глина"],[.5,"Песок"],[0,"Графит"]]})}
+ <div class="pcol"><span class="eb">Свет</span>${fader("dim",dv,{n:11,ticks:[[1,"Известняк"],[.5,"Травертин"],[0,"Базальт"]]})}
   <b class="pv" id="pvDim">${S.dimAuto?"Авто · "+(autoMode()=="day"?"день":"ночь"):DIMNAME(dimNow())}</b>
   <button class="pk16${S.dimAuto?" on":""}" data-pk="auto"><i class="led"></i>Авто</button></div>
  <div class="pcol"><span class="eb">Звук</span>${fader("vol",S.sound?S.vol:0,{n:11,ticks:[[1,"громко"],[0,"тишина"]]})}
@@ -7066,7 +7071,15 @@ const EN={
 "Память браузера заполнена — фото объекта не сохранится после перезапуска": "Browser storage is full — the property photo won’t persist after restart",
 "основателям — бесплатно": "free for Founders",
 "Оставить": "Keep",
-"Для основателей клуба — бесплатно.": "Free for Club Founders."
+"Для основателей клуба — бесплатно.": "Free for Club Founders.",
+"Известняк": "Limestone",
+"Травертин": "Travertine",
+"Базальт": "Basalt",
+"Базальт · сумерки": "Basalt · dusk",
+"Травертин · сумерки": "Travertine · dusk",
+"Известняк · теплее": "Limestone · warmer",
+"Травертин · светлее": "Travertine · lighter",
+"Известняк · Травертин · Базальт": "Limestone · Travertine · Basalt"
 },
 "t": {
 "IV кв. {0}": "Q4 {0}",
@@ -7478,7 +7491,7 @@ APP.addEventListener("click",e=>{if(e.target.closest("#gJoin")){e.stopImmediateP
 const _intro20=intro;intro=function(done){const r=_intro20(done);requestAnimationFrame(()=>$("#boot20")?.remove());return r};
 setTimeout(()=>{const b=$("#boot20");if(b){b.style.transition="opacity .5s";b.style.opacity=0;setTimeout(()=>b.remove(),600)}},3500); // на случай, если заставки нет
 // =================== v21 · коллекция тем: Город · Розовая · Карбон ===================
-// Базовые темы (Глина · Песок · Графит со шкалой) — бесплатно. Коллекция поверх шкалы:
+// Базовые темы (Известняк · Травертин · Базальт со шкалой) — бесплатно. Коллекция поверх шкалы:
 // «Город» — своя тема у каждого города (Краснодар, Москва, Юг); с платной подписки («Ключ» и выше) — бесплатно, гостю — за баллы.
 // «Розовая» и «Карбон» — за баллы. Закрытые темы можно примерить на 10 секунд. Баллы — не деньги.
 const TH21={city:{krd:{skin:"graphite",p:{bg:"#22402F",b2:"#2A4A37",b3:"#30533E",ink:"#F3F0DE",mut:"#C9D4BD",line:"#3B5D46",a1:"#E4C46C",on1:"#1D3326","rub-c1":"#3A5E45","rub-c2":"#1B3425","fill-c1":"#EBCF7E","fill-c2":"#B8913D",led:"#F4D47C","led-off":"#456650",raz:"#3EE08A",dva:"#FFF6DE",tri:"#F4D47C",mat2a:"#C29A45",mat2b:"#94712A",onmat2:"#121B10",sky1:"#2C4A37",sky2:"#22402F",wall:"#33563F",wall2:"#2A4A35",win:"#4C6E55",floor:"#26432F",sacc:"#C29A45",glow:"#C29A45"}},msk:{skin:"clay",p:{bg:"#E6DCCF",b2:"#F1E9DF",b3:"#DACDBE",ink:"#2A1714",mut:"#58403A",line:"#D3C2B2",a1:"#3A1A16",on1:"#FBF1E7","rub-c1":"#F4EDE4","rub-c2":"#D8C9B9","fill-c1":"#B3352D","fill-c2":"#7E1D18",led:"#FF2E3F","led-off":"#CDBBAA",raz:"#FF2E3F",dva:"#FFE9B8",tri:"#E8B94C",mat2a:"#A8302A",mat2b:"#741C17",onmat2:"#FBEFE4",sky1:"#E9E0D5",sky2:"#F4EEE6",wall:"#DACCBD",wall2:"#C6B39F",win:"#FBF7F2",floor:"#E2D7CA",sacc:"#A8302A",glow:"#E8B94C"}},sch:{skin:"clay",p:{bg:"#D5EAE6",b2:"#E6F4F1",b3:"#C6DFDA",ink:"#0F2E2C",mut:"#30504C",line:"#BFD9D4",a1:"#0E3A39",on1:"#EEF9F7","rub-c1":"#EAF7F4","rub-c2":"#C2DDD8","fill-c1":"#1F6E6C","fill-c2":"#0F4846",led:"#36D9C8","led-off":"#B5D3CE",raz:"#36D9C8",dva:"#FFFFFF",tri:"#FF8A66",mat2a:"#FFB896",mat2b:"#F0835F",onmat2:"#3A1A10",sky1:"#DDF0EC",sky2:"#EEF8F6",wall:"#CFE5E0",wall2:"#BAD6D0",win:"#F7FCFB",floor:"#D9ECE8",sacc:"#2E7C78",glow:"#FF8A66"}}},pink:{skin:"clay",p:{bg:"#F6D7E2",b2:"#FBE7EF",b3:"#F0C6D4",ink:"#3A1328",mut:"#7A3F62",line:"#EDBFD0",a1:"#4A1431",on1:"#FFF2F8","rub-c1":"#FDEAF2","rub-c2":"#EFC2D3","fill-c1":"#D63A84","fill-c2":"#A91B62",led:"#FF3D9E","led-off":"#EBBDCE",raz:"#FF3D9E",dva:"#FFD6EA",tri:"#FF86C2",mat2a:"#DC4F98",mat2b:"#B02A72",onmat2:"#FFF6FA",sky1:"#F9E1EA",sky2:"#FDEFF4",wall:"#F1CCDA",wall2:"#E5B3C6",win:"#FFF8FB",floor:"#F5D9E3",sacc:"#C93D86",glow:"#FF3D9E"}},carbon:{skin:"graphite",p:{bg:"#111315",b2:"#181B1E",b3:"#1F2226",ink:"#F2F4F5",mut:"#AEB5BB",line:"#2A2E33",a1:"#FF6A00",on1:"#111315","rub-c1":"#24272B","rub-c2":"#0F1113","fill-c1":"#FF7A1A","fill-c2":"#D94F00",led:"#FF6A00","led-off":"#2E3238",raz:"#FF6A00",dva:"#F2F4F5",tri:"#FFB070",mat2a:"#FF7A1A",mat2b:"#D94F00",onmat2:"#111315",sky1:"#1A1D20",sky2:"#111315",wall:"#202327",wall2:"#181B1E",win:"#33383E",floor:"#15181B",sacc:"#FF6A00",glow:"#FF6A00"}}};
@@ -7502,7 +7515,7 @@ const _setDimAuto21=setDimAuto;setDimAuto=function(on){if(S.theme&&!S._try){S.th
 const thSw21=k=>{const T=k=="base"?{p:dimPal(0).p}:thPal21(k);const p=k=="base"?DIMP.clay:T.p;return `<i class="sw21" style="--a:${p.bg};--b:${p["fill-c1"]};--c:${p.led}"></i>`};
 const thTile21=k=>{const on=k=="base"?!S.theme:S.theme==k,own=k=="base"||owns21(k);
  const nm=k=="base"?"Базовая":k=="city"?CITYN21[CITY[S.city]?.id]||"Город":THN21[k];
- const st=k=="base"?"Глина · Песок · Графит":own?(on?"включена":"открыта"):founder21()?"основателям — бесплатно":k=="city"?`с «Ключа» · или ${fmt(THP21[k])} б.`:`${fmt(THP21[k])} баллов`;
+ const st=k=="base"?"Известняк · Травертин · Базальт":own?(on?"включена":"открыта"):founder21()?"основателям — бесплатно":k=="city"?`с «Ключа» · или ${fmt(THP21[k])} б.`:`${fmt(THP21[k])} баллов`;
  return `<button class="th21${on?" on":""}${own?"":" lock"}" data-th21="${k}">${thSw21(k)}<b>${nm}</b><span>${own?"":'<i class="lk21"></i>'}${st}</span></button>`};
 const collHTML21=()=>`<div class="coll21"><div class="coll21h"><span class="eb">Коллекция</span><span class="m">тема города · Розовая · Карбон</span></div><div class="coll21g">${["base","city","pink","carbon"].map(thTile21).join("")}</div></div>`;
 const _pult21=pultHTML;pultHTML=function(c){const h=_pult21(c);return c?h:h+collHTML21()};
@@ -7596,6 +7609,13 @@ const _slide21=slideHTML;slideHTML=function(o,...a){const h=_slide21(o,...a);ret
 const _xslide21=xslide;xslide=function(...a){return _xslide21(...a).replace(/(<button data-ask="[^"]*"[^>]*>)<span class="brk3"><i><\/i><i><\/i><i><\/i><\/span>/g,(m,b)=>b.replace('aria-label="Спросить брокера"','aria-label="Чат по объекту"')+CHAT21)};
 // html получает фон приложения (за пределами экрана нет тёмной полосы)
 if(APP.classList.contains("standalone")){document.documentElement.style.background=getComputedStyle(APP).backgroundColor}
+// =================== v21 · латинский леттеринг RAZDVATRI (бородка под R — решение Ива 20.10) ===================
+const WMEN21=`<svg class="wmen-svg" viewBox="-40 -790 7593 1180" role="img" aria-label="RAZDVATRI"><path fill="currentColor" d="M226 -426H488Q532 -426 556.5 -446.0Q581 -466 581 -504Q581 -542 556.5 -562.0Q532 -582 488 -582H193L298 -690V0H65V-750H523Q610 -750 676.0 -719.0Q742 -688 779.0 -633.0Q816 -578 816 -504Q816 -432 779.0 -376.5Q742 -321 676.0 -290.5Q610 -260 523 -260H226ZM326 -351H585L843 0H576ZM1090 -135V-321H1604V-135ZM1505 -750 1841 0H1592L1320 -649H1383L1110 0H862L1197 -750ZM1882 0V-167L2352 -615L2525 -570H1886V-751H2613V-584L2144 -135L1997 -180H2616V0ZM3110 -750Q3245 -750 3346.5 -703.5Q3448 -657 3504.5 -573.0Q3561 -489 3561 -375Q3561 -262 3504.5 -177.5Q3448 -93 3346.5 -46.5Q3245 0 3110 0H2724V-750ZM2955 -101 2848 -207H3128Q3189 -207 3233.5 -227.5Q3278 -248 3302.0 -286.0Q3326 -324 3326 -375Q3326 -427 3302.0 -464.5Q3278 -502 3233.5 -522.5Q3189 -543 3128 -543H2848L2955 -649ZM4122 -106H4025L4303 -750H4547L4203 0H3938L3594 -750H3843ZM4773 -135V-321H5287V-135ZM5188 -750 5524 0H5275L5003 -649H5066L4793 0H4545L4880 -750ZM5821 -649H6054V0H5821ZM5543 -750H6332V-543H5543ZM6578 -426H6840Q6884 -426 6908.5 -446.0Q6933 -466 6933 -504Q6933 -542 6908.5 -562.0Q6884 -582 6840 -582H6545L6650 -690V0H6417V-750H6875Q6962 -750 7028.0 -719.0Q7094 -688 7131.0 -633.0Q7168 -578 7168 -504Q7168 -432 7131.0 -376.5Q7094 -321 7028.0 -290.5Q6962 -260 6875 -260H6578ZM6678 -351H6937L7195 0H6928ZM7280 -750H7513V0H7280Z"/><path fill="currentColor" d="M6417.0 -8.0L7195.0 -8.0L7195.0 350.0L6962.0 350.0L6962.0 80.0L6908.1 80.0L6908.1 250.0L6703.0 250.0L6703.0 80.0L6649.1 80.0L6649.1 150.0L6417.0 150.0Z"/></svg>`;
+// шапка: вместо набранного шрифтом слова — леттеринг
+wmLang=function(){const b=$("#xbrand");if(!b)return;let en=$(".wmen",b);if(S.lang=="en"){if(!en){en=document.createElement("span");en.className="wmen";en.innerHTML=WMEN21;const w=$(".wm",b);w&&w.after(en)}}else if(en)en.remove();APP.classList.toggle("lang-en",S.lang=="en")};
+setTimeout(()=>{const e=$("#xbrand .wmen");if(e)e.remove();wmLang()},0);
+// заставка (EN): тот же леттеринг
+new MutationObserver(()=>{$$(".xr3 .r3en").forEach(e=>{if(!e.querySelector("svg"))e.innerHTML=WMEN21})}).observe(APP,{childList:true,subtree:true});
 // =================== запуск ===================
 buildStrip();applyTheme(0);badge();go("home");APP.style.setProperty("--tx-velvet",`url(${ASSETS.velvet})`);APP.style.setProperty("--tx-glass",`url(${ASSETS.glass})`);APP.style.setProperty("--tx-foil",`url(${ASSETS.foil})`);
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches){splash();setTimeout(()=>onboarding(cookieBar),2500)}else onboarding(cookieBar);
