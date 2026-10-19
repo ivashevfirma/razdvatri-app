@@ -7060,7 +7060,10 @@ const EN={
 "Как попасть:": "How to get in:",
 "места распределяют основатели.": "seats are assigned by the Founders.",
 "номер в зале клуба, пожизненный статус, приоритет в ленте, закрытые встречи.": "a numbered seat in the Club hall, lifetime status, priority in the Feed, private meetups.",
-"Память браузера заполнена — фото объекта не сохранится после перезапуска": "Browser storage is full — the property photo won’t persist after restart"
+"Память браузера заполнена — фото объекта не сохранится после перезапуска": "Browser storage is full — the property photo won’t persist after restart",
+"основателям — бесплатно": "free for Founders",
+"Оставить": "Keep",
+"Для основателей клуба — бесплатно.": "Free for Club Founders."
 },
 "t": {
 "IV кв. {0}": "Q4 {0}",
@@ -7480,7 +7483,8 @@ const THN21={city:"Город",pink:"Розовая",carbon:"Карбон"},THP2
 S.theme=(()=>{try{return localStorage.getItem("rdt.theme")||null}catch(e){return null}})();
 S.owned=new Set((()=>{try{return JSON.parse(localStorage.getItem("rdt.themes")||"[]")}catch(e){return[]}})());
 const saveTh21=()=>{try{S.theme?localStorage.setItem("rdt.theme",S.theme):localStorage.removeItem("rdt.theme");localStorage.setItem("rdt.themes",JSON.stringify([...S.owned]))}catch(e){}};
-const cityFree21=()=>(S.tier||0)>=1; // «Город» — бесплатно с «Ключа»
+const cityFree21=()=>(S.tier||0)>=1&&!(S.me&&S.me.founder); // «Город» — бесплатно с «Ключа» (основатели открывают через примерку)
+const founder21=()=>!!(S.me&&S.me.founder); // основатели (Ив, Артём): примерка, затем «Оставить» — бесплатно
 const owns21=k=>S.owned.has(k)||(k=="city"&&cityFree21());
 const thNow21=()=>S._try||(S.theme&&owns21(S.theme)?S.theme:null);
 let _thCity21=null;
@@ -7495,7 +7499,7 @@ const _setDimAuto21=setDimAuto;setDimAuto=function(on){if(S.theme&&!S._try){S.th
 const thSw21=k=>{const T=k=="base"?{p:dimPal(0).p}:thPal21(k);const p=k=="base"?DIMP.clay:T.p;return `<i class="sw21" style="--a:${p.bg};--b:${p["fill-c1"]};--c:${p.led}"></i>`};
 const thTile21=k=>{const on=k=="base"?!S.theme:S.theme==k,own=k=="base"||owns21(k);
  const nm=k=="base"?"Базовая":k=="city"?CITYN21[CITY[S.city]?.id]||"Город":THN21[k];
- const st=k=="base"?"Глина · Песок · Графит":own?(on?"включена":"открыта"):k=="city"?`с «Ключа» · или ${fmt(THP21[k])} б.`:`${fmt(THP21[k])} баллов`;
+ const st=k=="base"?"Глина · Песок · Графит":own?(on?"включена":"открыта"):founder21()?"основателям — бесплатно":k=="city"?`с «Ключа» · или ${fmt(THP21[k])} б.`:`${fmt(THP21[k])} баллов`;
  return `<button class="th21${on?" on":""}${own?"":" lock"}" data-th21="${k}">${thSw21(k)}<b>${nm}</b><span>${own?"":'<i class="lk21"></i>'}${st}</span></button>`};
 const collHTML21=()=>`<div class="coll21"><div class="coll21h"><span class="eb">Коллекция</span><span class="m">тема города · Розовая · Карбон</span></div><div class="coll21g">${["base","city","pink","carbon"].map(thTile21).join("")}</div></div>`;
 const _pult21=pultHTML;pultHTML=function(c){const h=_pult21(c);return c?h:h+collHTML21()};
@@ -7506,15 +7510,15 @@ let tryT21=0;
 function tryOn21(k){endTry21(true);S._try=k;closeSheet();APP.classList.add("dimfx");applyTheme(S.city);setTimeout(()=>APP.classList.remove("dimfx"),700);SND.chime();
  const nm=k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k],pr=THP21[k];
  const b=document.createElement("div");b.className="try21";b.innerHTML=`<div class="try21i"><span class="eb">Примерка · ${nm}</span><i class="try21bar"></i>
-  <div class="try21b"><button class="btn" data-try21="keep">Оставить · ${fmt(pr)} баллов</button><button class="glink16" data-try21="back">Вернуть</button></div>${k=="city"?'<p class="m">С подпиской «Ключ» тема города — бесплатно.</p>':""}</div>`;
+  <div class="try21b"><button class="btn" data-try21="keep">${founder21()?"Оставить":`Оставить · ${fmt(pr)} баллов`}</button><button class="glink16" data-try21="back">Вернуть</button></div>${founder21()?'<p class="m">Для основателей клуба — бесплатно.</p>':k=="city"?'<p class="m">С подпиской «Ключ» тема города — бесплатно.</p>':""}</div>`;
  APP.appendChild(b);requestAnimationFrame(()=>b.classList.add("on"));tryT21=setTimeout(()=>endTry21(),10000)}
 function endTry21(silent){clearTimeout(tryT21);const b=$(".try21");if(b){b.classList.remove("on");setTimeout(()=>b.remove(),350)}if(S._try){S._try=null;APP.classList.add("dimfx");applyTheme(S.city);setTimeout(()=>APP.classList.remove("dimfx"),700);if(!silent)SND.down()}}
 APP.addEventListener("click",e=>{const t=e.target.closest("[data-th21]");if(t){e.stopImmediatePropagation();const k=t.dataset.th21;SND.tok();
   if(k=="base"){setTheme21(null);return}if(owns21(k)){setTheme21(k);return}tryOn21(k);return}
  const a=e.target.closest("[data-try21]");if(!a)return;e.stopImmediatePropagation();const k=S._try;if(!k)return;
  if(a.dataset.try21=="back"){endTry21();return}
- const pr=THP21[k];if(S.pts<pr){toast(`Нужно ${fmt(pr)} баллов, у вас ${fmt(S.pts)}. Баллы — за показы, прокруты и активность в клубе.`,2600);return}
- S.pts-=pr;S.hist.unshift([`Тема «${k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k]}»`,-pr,"сейчас"]);S.owned.add(k);S._try=null;clearTimeout(tryT21);
+ const pr=founder21()?0:THP21[k];if(S.pts<pr){toast(`Нужно ${fmt(pr)} баллов, у вас ${fmt(S.pts)}. Баллы — за показы, прокруты и активность в клубе.`,2600);return}
+ if(pr){S.pts-=pr;S.hist.unshift([`Тема «${k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k]}»`,-pr,"сейчас"])}S.owned.add(k);S._try=null;clearTimeout(tryT21);
  const b=$(".try21");if(b){b.classList.remove("on");setTimeout(()=>b.remove(),350)}S.theme=k;saveTh21();applyTheme(S.city);SND.win();toast(`Тема <b>${k=="city"?CITYN21[CITY[S.city]?.id]:THN21[k]}</b> — ваша`,2000);typeof pulseWallet=="function"&&pulseWallet()},true);
 setTimeout(()=>{if(thNow21())applyTheme(S.city)},0);
 window.__RDT_dim=setDim;
