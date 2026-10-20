@@ -7519,6 +7519,9 @@ const thTile21=k=>{const on=k=="base"?!S.theme:S.theme==k,own=k=="base"||owns21(
  return `<button class="th21${on?" on":""}${own?"":" lock"}" data-th21="${k}">${thSw21(k)}<b>${nm}</b><span>${own?"":'<i class="lk21"></i>'}${st}</span></button>`};
 const collHTML21=()=>`<div class="coll21"><div class="coll21h"><span class="eb">Коллекция</span><span class="m">тема города · Розовая · Карбон</span></div><div class="coll21g">${["base","city","pink","carbon"].map(thTile21).join("")}</div></div>`;
 const _pult21=pultHTML;pultHTML=function(c){const h=_pult21(c);return c?h:h+collHTML21()};
+// v21.4: коллекция и в Профиле (там Пульт компактный), в онбординге — нет
+let prof21=0;const _prof21=V.profile;V.profile=function(){prof21=1;try{return _prof21.apply(this,arguments)}finally{prof21=0}};
+const _pult21b=pultHTML;pultHTML=function(c){const h=_pult21b(c);return c&&prof21?h+collHTML21():h};
 const refreshColl21=()=>{const g=$(".coll21");if(g)g.outerHTML=collHTML21()};
 function setTheme21(k){S.theme=k;saveTh21();APP.classList.add("dimfx");applyTheme(S.city);setTimeout(()=>APP.classList.remove("dimfx"),700);refreshColl21()}
 // примерка: 10 секунд, потом «Оставить» или «Вернуть»
